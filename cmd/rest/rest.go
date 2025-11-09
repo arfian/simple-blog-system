@@ -19,6 +19,7 @@ import (
 
 	"simple-blog-system/internal/setup"
 
+	commentServer "simple-blog-system/internal/app/comment/server"
 	postServer "simple-blog-system/internal/app/post/server"
 	userServer "simple-blog-system/internal/app/user/server"
 
@@ -90,6 +91,7 @@ func initRoute(router *gin.Engine, internalAppStruct setup.InternalAppStruct) {
 	apiRouter := router.Group("/v1/api")
 	userServer.Routes.NewProfile(apiRouter.Group("/profile"), internalAppStruct.Handler.UserHandler)
 	postServer.Routes.New(apiRouter.Group("/post"), internalAppStruct.Handler.PostHandler)
+	commentServer.Routes.New(apiRouter.Group("/comment"), internalAppStruct.Handler.CommentHandler)
 }
 
 func initPublicRoute(router *gin.Engine, internalAppStruct setup.InternalAppStruct) {

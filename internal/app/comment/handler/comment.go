@@ -1,8 +1,8 @@
 package handler
 
 import (
-	"simple-blog-system/internal/app/post/payload"
-	"simple-blog-system/internal/app/post/port"
+	"simple-blog-system/internal/app/comment/payload"
+	"simple-blog-system/internal/app/comment/port"
 	"simple-blog-system/pkg/helper"
 	"strconv"
 
@@ -11,34 +11,34 @@ import (
 )
 
 type handler struct {
-	postService port.IPostService
+	commentService port.ICommentService
 }
 
-func New(postService port.IPostService) port.IPostHandler {
+func New(commentService port.ICommentService) port.ICommentHandler {
 	return &handler{
-		postService: postService,
+		commentService: commentService,
 	}
 }
 
-func (h *handler) AddPost(c *gin.Context) {
+func (h *handler) AddComment(c *gin.Context) {
 	username := c.GetString("username")
 	var (
-		postRequest payload.PostRequest
+		commentRequest payload.CommentRequest
 	)
 
-	if err := c.ShouldBind(&postRequest); err != nil {
+	if err := c.ShouldBind(&commentRequest); err != nil {
 		helper.ResponseError(c, err)
 		return
 	}
 
 	validate := validator.New()
-	err := validate.Struct(postRequest)
+	err := validate.Struct(commentRequest)
 	if err != nil {
 		helper.ResponseError(c, err)
 		return
 	}
 
-	res, err := h.postService.AddPost(c.Request.Context(), username, postRequest)
+	res, err := h.commentService.AddComment(c.Request.Context(), username, commentRequest)
 	if err != nil {
 		helper.ResponseError(c, err)
 		return
@@ -50,19 +50,19 @@ func (h *handler) AddPost(c *gin.Context) {
 	})
 }
 
-func (h *handler) UpdatePost(c *gin.Context) {
+func (h *handler) UpdateComment(c *gin.Context) {
 	username := c.GetString("username")
 	var (
-		postRequest payload.PostRequest
+		commentRequest payload.CommentRequest
 	)
 
-	if err := c.ShouldBind(&postRequest); err != nil {
+	if err := c.ShouldBind(&commentRequest); err != nil {
 		helper.ResponseError(c, err)
 		return
 	}
 
 	validate := validator.New()
-	err := validate.Struct(postRequest)
+	err := validate.Struct(commentRequest)
 	if err != nil {
 		helper.ResponseError(c, err)
 		return
@@ -70,7 +70,7 @@ func (h *handler) UpdatePost(c *gin.Context) {
 
 	idStr := c.Param("id")
 
-	res, err := h.postService.UpdatePost(c.Request.Context(), username, idStr, postRequest)
+	res, err := h.commentService.UpdateComment(c.Request.Context(), username, idStr, commentRequest)
 	if err != nil {
 		helper.ResponseError(c, err)
 		return
@@ -82,12 +82,12 @@ func (h *handler) UpdatePost(c *gin.Context) {
 	})
 }
 
-func (h *handler) DeletePost(c *gin.Context) {
+func (h *handler) DeleteComment(c *gin.Context) {
 	username := c.GetString("username")
 
 	idStr := c.Param("id")
 
-	res, err := h.postService.DeletePost(c.Request.Context(), username, idStr)
+	res, err := h.commentService.DeleteComment(c.Request.Context(), username, idStr)
 	if err != nil {
 		helper.ResponseError(c, err)
 		return
@@ -99,7 +99,7 @@ func (h *handler) DeletePost(c *gin.Context) {
 	})
 }
 
-func (h *handler) GetAllPost(c *gin.Context) {
+func (h *handler) GetAllComment(c *gin.Context) {
 	username := c.GetString("username")
 
 	pageStr := c.Query("page")
@@ -116,7 +116,7 @@ func (h *handler) GetAllPost(c *gin.Context) {
 		return
 	}
 
-	res, err := h.postService.GetAllPost(c.Request.Context(), username, page, limit)
+	res, err := h.commentService.GetAllComment(c.Request.Context(), username, page, limit)
 	if err != nil {
 		helper.ResponseError(c, err)
 		return
@@ -128,12 +128,12 @@ func (h *handler) GetAllPost(c *gin.Context) {
 	})
 }
 
-func (h *handler) GetById(c *gin.Context) {
+func (h *handler) GetCommentById(c *gin.Context) {
 	username := c.GetString("username")
 
 	idStr := c.Param("id")
 
-	res, err := h.postService.GetById(c.Request.Context(), username, idStr)
+	res, err := h.commentService.GetCommentById(c.Request.Context(), username, idStr)
 	if err != nil {
 		helper.ResponseError(c, err)
 		return

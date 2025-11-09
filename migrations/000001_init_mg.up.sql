@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS comments (
     id VARCHAR(50) PRIMARY KEY NOT NULL DEFAULT uuid_generate_v4(),
     username VARCHAR(50) NOT NULL,
     comment TEXT NOT NULL,
-    post VARCHAR(50) REFERENCES posts(id) ON DELETE CASCADE,
+    post_id VARCHAR(50) REFERENCES posts(id) ON DELETE CASCADE,
     created_by VARCHAR(50) NOT NULL,
     updated_by VARCHAR(50) NULL,
     created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
