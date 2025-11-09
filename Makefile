@@ -22,3 +22,9 @@ migrateup:
 
 migratedown:
 	migrate -path migrations -database "${DB_DSN}" -verbose down
+
+docker-build: 
+	docker build -t simple-blog-system -f Dockerfile .
+
+docker-run: 
+	docker run -p 8089:8089 simple-blog-system:latest

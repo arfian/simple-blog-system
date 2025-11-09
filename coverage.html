@@ -1,0 +1,3176 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>middleware: Go Coverage Report</title>
+		<style>
+			body {
+				background: black;
+				color: rgb(80, 80, 80);
+			}
+			body, pre, #legend span {
+				font-family: Menlo, monospace;
+				font-weight: bold;
+			}
+			#topbar {
+				background: black;
+				position: fixed;
+				top: 0; left: 0; right: 0;
+				height: 42px;
+				border-bottom: 1px solid rgb(80, 80, 80);
+			}
+			#content {
+				margin-top: 50px;
+			}
+			#nav, #legend {
+				float: left;
+				margin-left: 10px;
+			}
+			#legend {
+				margin-top: 12px;
+			}
+			#nav {
+				margin-top: 10px;
+			}
+			#legend span {
+				margin: 0 5px;
+			}
+			.cov0 { color: rgb(192, 0, 0) }
+.cov1 { color: rgb(128, 128, 128) }
+.cov2 { color: rgb(116, 140, 131) }
+.cov3 { color: rgb(104, 152, 134) }
+.cov4 { color: rgb(92, 164, 137) }
+.cov5 { color: rgb(80, 176, 140) }
+.cov6 { color: rgb(68, 188, 143) }
+.cov7 { color: rgb(56, 200, 146) }
+.cov8 { color: rgb(44, 212, 149) }
+.cov9 { color: rgb(32, 224, 152) }
+.cov10 { color: rgb(20, 236, 155) }
+
+		</style>
+	</head>
+	<body>
+		<div id="topbar">
+			<div id="nav">
+				<select id="files">
+				
+				<option value="file0">simple-blog-system/cmd/rest/middleware/jwt.go (0.0%)</option>
+				
+				<option value="file1">simple-blog-system/cmd/rest/middleware/middleware.go (0.0%)</option>
+				
+				<option value="file2">simple-blog-system/cmd/rest/rest.go (0.0%)</option>
+				
+				<option value="file3">simple-blog-system/config/config.go (0.0%)</option>
+				
+				<option value="file4">simple-blog-system/config/db/db.go (0.0%)</option>
+				
+				<option value="file5">simple-blog-system/docs/docs.go (0.0%)</option>
+				
+				<option value="file6">simple-blog-system/internal/app/comment/handler/comment.go (0.0%)</option>
+				
+				<option value="file7">simple-blog-system/internal/app/comment/model/comment.go (0.0%)</option>
+				
+				<option value="file8">simple-blog-system/internal/app/comment/repository/comment.go (94.1%)</option>
+				
+				<option value="file9">simple-blog-system/internal/app/comment/server/route.go (0.0%)</option>
+				
+				<option value="file10">simple-blog-system/internal/app/comment/service/comment.go (95.9%)</option>
+				
+				<option value="file11">simple-blog-system/internal/app/post/handler/post.go (0.0%)</option>
+				
+				<option value="file12">simple-blog-system/internal/app/post/model/post.go (0.0%)</option>
+				
+				<option value="file13">simple-blog-system/internal/app/post/repository/post.go (94.1%)</option>
+				
+				<option value="file14">simple-blog-system/internal/app/post/server/route.go (0.0%)</option>
+				
+				<option value="file15">simple-blog-system/internal/app/post/service/post.go (97.6%)</option>
+				
+				<option value="file16">simple-blog-system/internal/app/user/handler/user.go (0.0%)</option>
+				
+				<option value="file17">simple-blog-system/internal/app/user/model/user.go (0.0%)</option>
+				
+				<option value="file18">simple-blog-system/internal/app/user/repository/user.go (92.3%)</option>
+				
+				<option value="file19">simple-blog-system/internal/app/user/server/route.go (0.0%)</option>
+				
+				<option value="file20">simple-blog-system/internal/app/user/service/user.go (94.9%)</option>
+				
+				<option value="file21">simple-blog-system/internal/setup/app.go (0.0%)</option>
+				
+				<option value="file22">simple-blog-system/internal/setup/setup.go (0.0%)</option>
+				
+				<option value="file23">simple-blog-system/main.go (0.0%)</option>
+				
+				<option value="file24">simple-blog-system/pkg/encrypt/encrypt.go (0.0%)</option>
+				
+				<option value="file25">simple-blog-system/pkg/helper/datetime.go (0.0%)</option>
+				
+				<option value="file26">simple-blog-system/pkg/helper/http_response.go (0.0%)</option>
+				
+				<option value="file27">simple-blog-system/pkg/log/zerolog.go (0.0%)</option>
+				
+				<option value="file28">simple-blog-system/pkg/transaction/handler.go (0.0%)</option>
+				
+				<option value="file29">simple-blog-system/pkg/transaction/helper.go (0.0%)</option>
+				
+				<option value="file30">simple-blog-system/pkg/validations/struct.go (0.0%)</option>
+				
+				<option value="file31">simple-blog-system/pkg/validations/validations.go (0.0%)</option>
+				
+				</select>
+			</div>
+			<div id="legend">
+				<span>not tracked</span>
+			
+				<span class="cov0">no coverage</span>
+				<span class="cov1">low coverage</span>
+				<span class="cov2">*</span>
+				<span class="cov3">*</span>
+				<span class="cov4">*</span>
+				<span class="cov5">*</span>
+				<span class="cov6">*</span>
+				<span class="cov7">*</span>
+				<span class="cov8">*</span>
+				<span class="cov9">*</span>
+				<span class="cov10">high coverage</span>
+			
+			</div>
+		</div>
+		<div id="content">
+		
+		<pre class="file" id="file0" style="display: none">package middleware
+
+import (
+        "errors"
+        "simple-blog-system/config"
+        "strings"
+
+        jwt "github.com/golang-jwt/jwt/v5"
+)
+
+type JWTClaims struct {
+        jwt.RegisteredClaims
+        ID       string `json:"id"`
+        Username string `json:"username"`
+}
+
+func ParseJWTToken(tokenString string) (*JWTClaims, error) <span class="cov0" title="0">{
+        configData := config.GetConfig()
+        secretKey := configData.JWT.SigningKey
+
+        tokenString = strings.Split(tokenString, "Bearer ")[1]
+        token, err := jwt.ParseWithClaims(tokenString, &amp;JWTClaims{}, func(token *jwt.Token) (i interface{}, err error) </span><span class="cov0" title="0">{
+                return []byte(secretKey), nil
+        }</span>)
+        <span class="cov0" title="0">if err != nil </span><span class="cov0" title="0">{
+                return nil, err
+        }</span>
+
+        <span class="cov0" title="0">if claims, ok := token.Claims.(*JWTClaims); ok &amp;&amp; token.Valid </span><span class="cov0" title="0">{
+                return claims, nil
+        }</span>
+
+        <span class="cov0" title="0">return nil, errors.New("invalid jwt token")</span>
+}
+</pre>
+		
+		<pre class="file" id="file1" style="display: none">package middleware
+
+import (
+        "net/http"
+        "simple-blog-system/pkg/helper"
+        "time"
+
+        "github.com/gin-gonic/gin"
+        "github.com/google/uuid"
+)
+
+func CORSMiddleware() gin.HandlerFunc <span class="cov0" title="0">{
+        return func(c *gin.Context) </span><span class="cov0" title="0">{
+                c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+                c.Writer.Header().Set("Access-Control-Max-Age", "86400")
+                c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, PATCH")
+                c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Authorization, X-App-Id, X-Client-Id, X-Client-Version, X-Mock-Data")
+                c.Writer.Header().Set("Access-Control-Expose-Headers", "Content-Length")
+                c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
+
+                requestID := uuid.New().String()
+                c.Set("requestID", requestID)
+                c.Set("timeStart", time.Now().Format(time.RFC3339))
+                c.Writer.Header().Set("X-Request-ID", requestID)
+
+                if c.Request.Method == http.MethodOptions </span><span class="cov0" title="0">{
+                        c.AbortWithStatus(200)
+                }</span> else<span class="cov0" title="0"> {
+                        c.Next()
+                }</span>
+        }
+}
+
+func JWTAuthMiddleware() gin.HandlerFunc <span class="cov0" title="0">{
+        return func(c *gin.Context) </span><span class="cov0" title="0">{
+                authHeader := c.Request.Header.Get("Authorization")
+                if len(authHeader) == 0 </span><span class="cov0" title="0">{
+                        helper.SaveAuditLog(c, http.StatusText(http.StatusUnauthorized))
+                        c.AbortWithStatusJSON(http.StatusForbidden, helper.Response{
+                                Message: http.StatusText(http.StatusUnauthorized),
+                                Success: false,
+                        })
+                        return
+                }</span>
+
+                <span class="cov0" title="0">claims, err := ParseJWTToken(authHeader)
+                if err != nil </span><span class="cov0" title="0">{
+                        requestID, _ := c.Get("requestID")
+                        helper.SaveAuditLog(c, "token has invalid claims")
+                        c.AbortWithStatusJSON(http.StatusForbidden, helper.Response{
+                                Message:   err.Error(),
+                                Success:   false,
+                                RequestId: requestID,
+                        })
+                        return
+                }</span>
+
+                <span class="cov0" title="0">c.Set("id", claims.ID)
+                c.Set("username", claims.Username)</span>
+        }
+}
+</pre>
+		
+		<pre class="file" id="file2" style="display: none">package rest
+
+import (
+        "context"
+        "log"
+        "net/http"
+        "os"
+        "os/signal"
+        "strconv"
+        "time"
+
+        "github.com/gin-gonic/gin"
+
+        "simple-blog-system/pkg/constants"
+        "simple-blog-system/pkg/validations"
+
+        "simple-blog-system/cmd/rest/middleware"
+        "simple-blog-system/config"
+
+        "simple-blog-system/internal/setup"
+
+        commentServer "simple-blog-system/internal/app/comment/server"
+        postServer "simple-blog-system/internal/app/post/server"
+        userServer "simple-blog-system/internal/app/user/server"
+
+        _ "simple-blog-system/docs"
+
+        swaggerFiles "github.com/swaggo/files"
+        ginSwagger "github.com/swaggo/gin-swagger"
+)
+
+func StartServer(setupData setup.SetupData) <span class="cov0" title="0">{
+        conf := config.GetConfig()
+        if conf.App.Env == constants.PRODUCTION </span><span class="cov0" title="0">{
+                gin.SetMode(gin.ReleaseMode)
+        }</span>
+
+        // GIN Init
+        <span class="cov0" title="0">router := gin.Default()
+        router.UseRawPath = true
+        validations.InitStructValidation()
+
+        router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
+        // router.GET("/health", setupData.InternalApp.Handler.HealthCheckHandler.HealthCheck)
+
+        router.Use(middleware.CORSMiddleware())
+
+        initPublicRoute(router, setupData.InternalApp)
+
+        router.Use(middleware.JWTAuthMiddleware())
+
+        initRoute(router, setupData.InternalApp)
+
+        port := config.GetConfig().Http.Port
+        httpServer := &amp;http.Server{
+                Addr:    ":" + strconv.Itoa(port),
+                Handler: router,
+        }
+
+        go func() </span><span class="cov0" title="0">{
+                // service connections
+                if err := httpServer.ListenAndServe(); err != nil </span><span class="cov0" title="0">{
+                        log.Println("listen:", err)
+                }</span>
+        }()
+        <span class="cov0" title="0">log.Println("webserver started")
+
+        // Wait for interrupt signal to gracefully shutdown the server with
+        // a timeout of 5 seconds.
+        quit := make(chan os.Signal, 1)
+
+        signal.Notify(quit, os.Interrupt)
+        &lt;-quit
+
+        log.Println("Shutdown Server ...")
+
+        ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+        defer cancel()
+
+        if err := httpServer.Shutdown(ctx); err != nil </span><span class="cov0" title="0">{
+                log.Println("Server Shutdown:", err)
+        }</span>
+
+        <span class="cov0" title="0">_ = setup.CloseDB()
+
+        log.Println("Server exiting")</span>
+}
+
+func initRoute(router *gin.Engine, internalAppStruct setup.InternalAppStruct) <span class="cov0" title="0">{
+        apiRouter := router.Group("/v1/api")
+        userServer.Routes.NewProfile(apiRouter.Group("/profile"), internalAppStruct.Handler.UserHandler)
+        postServer.Routes.New(apiRouter.Group("/post"), internalAppStruct.Handler.PostHandler)
+        commentServer.Routes.New(apiRouter.Group("/comment"), internalAppStruct.Handler.CommentHandler)
+}</span>
+
+func initPublicRoute(router *gin.Engine, internalAppStruct setup.InternalAppStruct) <span class="cov0" title="0">{
+        apiRouter := router.Group("/v1/public-api")
+
+        userServer.Routes.New(apiRouter.Group("/user"), internalAppStruct.Handler.UserHandler)
+}</span>
+</pre>
+		
+		<pre class="file" id="file3" style="display: none">package config
+
+import (
+        "fmt"
+        "log"
+
+        "github.com/sirupsen/logrus"
+        "github.com/spf13/viper"
+)
+
+type (
+        DB struct {
+                DSN             string
+                MaxOpenConn     int
+                MaxIdleConn     int
+                MaxLifetimeConn int
+                MaxIdletimeConn int
+        }
+
+        app struct {
+                Env     string
+                Version string
+                Name    string
+        }
+
+        http struct {
+                Port int
+        }
+
+        jwt struct {
+                SigningKey string
+        }
+
+        Config struct {
+                DB   DB
+                App  app
+                Http http
+                JWT  jwt
+        }
+)
+
+var (
+        configData *Config
+)
+
+func InitConfig() <span class="cov0" title="0">{
+        viper.SetConfigType("env")
+        viper.SetConfigName(".env") // name of Config file (without extension)
+        viper.AddConfigPath(".")
+        viper.AddConfigPath("/secrets")
+        viper.AutomaticEnv()
+
+        if err := viper.ReadInConfig(); err != nil </span><span class="cov0" title="0">{
+                logrus.WithError(err).Warn("failed to load config file")
+        }</span>
+
+        <span class="cov0" title="0">configData = &amp;Config{
+                DB: DB{
+                        DSN:             getRequiredString("DB_DSN"),
+                        MaxOpenConn:     getRequiredInt("DB_MAX_OPEN_CONN"),
+                        MaxIdleConn:     getRequiredInt("DB_MAX_IDLE_CONN"),
+                        MaxLifetimeConn: getRequiredInt("DB_MAX_LIFETIME_CONN"),
+                        MaxIdletimeConn: getRequiredInt("DB_MAX_IDLETIME_CONN"),
+                },
+                App: app{
+                        Env:     getRequiredString("APP_ENV"),
+                        Version: viper.GetString("BITBUCKET_TAG"),
+                        Name:    "simple-blog-system",
+                },
+                Http: http{
+                        Port: getRequiredInt("APP_PORT"),
+                },
+                JWT: jwt{
+                        SigningKey: getRequiredString("SIGNING_KEY"),
+                },
+        }</span>
+}
+
+func getRequiredString(key string) string <span class="cov0" title="0">{
+        if viper.IsSet(key) </span><span class="cov0" title="0">{
+                return viper.GetString(key)
+        }</span>
+
+        <span class="cov0" title="0">log.Fatalln(fmt.Errorf("KEY %s IS MISSING", key))
+        return ""</span>
+}
+
+func getRequiredInt(key string) int <span class="cov0" title="0">{
+        if viper.IsSet(key) </span><span class="cov0" title="0">{
+                return viper.GetInt(key)
+        }</span>
+
+        <span class="cov0" title="0">panic(fmt.Errorf("KEY %s IS MISSING", key))</span>
+}
+
+// func getRequiredBool(key string) bool {
+//         if viper.IsSet(key) {
+//                 return viper.GetBool(key)
+//         }
+
+//         panic(fmt.Errorf("KEY %s IS MISSING", key))
+// }
+
+// func getRequiredDuration(key string) time.Duration {
+//         if viper.IsSet(key) {
+//                 return viper.GetDuration(key)
+//         }
+
+//         panic(fmt.Errorf("KEY %s IS MISSING", key))
+// }
+
+func GetConfig() Config <span class="cov0" title="0">{
+        return *configData
+}</span>
+</pre>
+		
+		<pre class="file" id="file4" style="display: none">package db
+
+import (
+        "database/sql"
+        "fmt"
+        "time"
+
+        "github.com/go-openapi/strfmt"
+        "gorm.io/driver/postgres"
+        "gorm.io/gorm"
+        "gorm.io/gorm/logger"
+
+        "simple-blog-system/config"
+)
+
+type GormDB struct {
+        *gorm.DB
+}
+
+type dbConfig struct {
+        GormDB       *GormDB
+        ConnectionDB *sql.DB
+}
+
+type AuditLog struct {
+        ID            strfmt.UUID4 `json:"id" gorm:"type:uuid;default:uuid_generate_v4()"`
+        NameTable     string       `json:"name_table"`
+        OperationType string       `json:"operation_type"`
+        Query         string       `json:"query"`
+        CreatedAt     time.Time    `json:"created_at" gorm:"autoCreateTime"`
+}
+
+func (db dbConfig) CloseConnection() error <span class="cov0" title="0">{
+        return db.ConnectionDB.Close()
+}</span>
+
+func Init(dsn string) (dbConfig, error) <span class="cov0" title="0">{
+        var (
+                dbConfigVar dbConfig
+                loggerGorm  logger.Interface
+        )
+        configData := config.GetConfig()
+
+        loggerGorm = logger.Default.LogMode(logger.Silent)
+        if configData.App.Env == "local" </span><span class="cov0" title="0">{
+                loggerGorm = logger.Default.LogMode(logger.Info)
+        }</span>
+
+        <span class="cov0" title="0">gormDB, err := gorm.Open(postgres.New(postgres.Config{
+                DSN: dsn,
+        }), &amp;gorm.Config{
+                Logger:                 loggerGorm,
+                SkipDefaultTransaction: true,
+        })
+        if err != nil </span><span class="cov0" title="0">{
+                return dbConfigVar, err
+        }</span>
+
+        <span class="cov0" title="0">sqlDB, err := gormDB.DB()
+        if err != nil </span><span class="cov0" title="0">{
+                return dbConfigVar, err
+        }</span>
+
+        <span class="cov0" title="0">sqlDB.SetConnMaxIdleTime(time.Second * time.Duration(configData.DB.MaxIdletimeConn))
+        sqlDB.SetMaxIdleConns(configData.DB.MaxIdleConn)
+        sqlDB.SetMaxOpenConns(configData.DB.MaxOpenConn)
+        sqlDB.SetConnMaxLifetime(time.Second * time.Duration(configData.DB.MaxLifetimeConn))
+        dbConfigVar.ConnectionDB = sqlDB
+
+        dbConfigVar.GormDB = &amp;GormDB{gormDB}
+        fmt.Print("database connected")
+        RegisterCallbacks(gormDB)
+
+        return dbConfigVar, nil</span>
+}
+
+func RegisterCallbacks(db *gorm.DB) <span class="cov0" title="0">{
+        db.Callback().Update().After("gorm:update").Register("update_audit_log", updateAuditLog)
+        db.Callback().Create().After("gorm:create").Register("create_audit_log", createAuditLog)
+}</span>
+
+func createAuditLog(db *gorm.DB) <span class="cov0" title="0">{
+        if db.Statement.Table == "audit_log" </span><span class="cov0" title="0">{
+                return
+        }</span>
+
+        <span class="cov0" title="0">sql := db.Dialector.Explain(db.Statement.SQL.String(), db.Statement.Vars...)
+
+        logEntry := &amp;AuditLog{
+                NameTable:     db.Statement.Schema.Table,
+                Query:         sql,
+                OperationType: "INSERT",
+        }
+
+        logDb := db.Session(&amp;gorm.Session{SkipHooks: true, NewDB: true})
+        if err := logDb.Table("audit_log").Save(logEntry).Error; err != nil </span><span class="cov0" title="0">{
+                return
+        }</span>
+        <span class="cov0" title="0">return</span>
+}
+
+func updateAuditLog(db *gorm.DB) <span class="cov0" title="0">{
+        if db.Statement.Table == "audit_log" </span><span class="cov0" title="0">{
+                return
+        }</span>
+
+        <span class="cov0" title="0">sql := db.Dialector.Explain(db.Statement.SQL.String(), db.Statement.Vars...)
+
+        logEntry := &amp;AuditLog{
+                NameTable:     db.Statement.Schema.Table,
+                Query:         sql,
+                OperationType: "UPDATE",
+        }
+
+        logDb := db.Session(&amp;gorm.Session{SkipHooks: true, NewDB: true})
+        if err := logDb.Table("audit_log").Save(logEntry).Error; err != nil </span><span class="cov0" title="0">{
+                return
+        }</span>
+        <span class="cov0" title="0">return</span>
+}
+</pre>
+		
+		<pre class="file" id="file5" style="display: none">// Package docs Code generated by swaggo/swag. DO NOT EDIT
+package docs
+
+import "github.com/swaggo/swag"
+
+const docTemplate = `{
+    "schemes": {{ marshal .Schemes }},
+    "swagger": "2.0",
+    "info": {
+        "description": "{{escape .Description}}",
+        "title": "{{.Title}}",
+        "contact": {},
+        "version": "{{.Version}}"
+    },
+    "host": "{{.Host}}",
+    "basePath": "{{.BasePath}}",
+    "paths": {
+        "/api/comment": {
+            "get": {
+                "description": "Get All Comment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "comment"
+                ],
+                "summary": "Get All Comment",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Page",
+                        "name": "page",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Limit",
+                        "name": "limit",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Add Comment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "comment"
+                ],
+                "summary": "Add Comment",
+                "parameters": [
+                    {
+                        "description": "Param Comment",
+                        "name": "comment",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/payload.CommentRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/comment/{id}": {
+            "get": {
+                "description": "Get Comment ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "comment"
+                ],
+                "summary": "Get Comment ID",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update Comment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "comment"
+                ],
+                "summary": "Update Comment",
+                "parameters": [
+                    {
+                        "description": "Param Comment",
+                        "name": "comment",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/payload.CommentRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete Comment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "comment"
+                ],
+                "summary": "Delete Comment",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/post": {
+            "get": {
+                "description": "Get All Post",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "post"
+                ],
+                "summary": "Get All Post",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "description": "Page",
+                        "name": "page",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "description": "Limit",
+                        "name": "limit",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "Add Post",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "post"
+                ],
+                "summary": "Add Post",
+                "parameters": [
+                    {
+                        "description": "Param Post",
+                        "name": "post",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/payload.PostRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/post/{id}": {
+            "get": {
+                "description": "Get Post ID",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "post"
+                ],
+                "summary": "Get Post ID",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "Update Post",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "post"
+                ],
+                "summary": "Update Post",
+                "parameters": [
+                    {
+                        "description": "Param Post",
+                        "name": "post",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/payload.PostRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "Delete Post",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "post"
+                ],
+                "summary": "Delete Post",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/profile": {
+            "get": {
+                "description": "Get User",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user"
+                ],
+                "summary": "Get User",
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/public-api/user/login": {
+            "post": {
+                "description": "Login User",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user"
+                ],
+                "summary": "Login User",
+                "parameters": [
+                    {
+                        "description": "Param Login",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/model.AuthUserModel"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        },
+        "/public-api/user/register": {
+            "post": {
+                "description": "Register User",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "user"
+                ],
+                "summary": "Register User",
+                "parameters": [
+                    {
+                        "description": "Param Register",
+                        "name": "user",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/payload.User"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "schema": {
+                            "$ref": "#/definitions/helper.Response"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "helper.Response": {
+            "type": "object",
+            "properties": {
+                "data": {},
+                "message": {
+                    "type": "string"
+                },
+                "request_id": {},
+                "success": {
+                    "type": "boolean"
+                }
+            }
+        },
+        "model.AuthUserModel": {
+            "type": "object",
+            "required": [
+                "password",
+                "username"
+            ],
+            "properties": {
+                "created_at": {
+                    "type": "string"
+                },
+                "created_by": {
+                    "type": "string"
+                },
+                "deleted_at": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "is_active": {
+                    "type": "boolean"
+                },
+                "last_login": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                },
+                "updated_by": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "payload.CommentRequest": {
+            "type": "object",
+            "required": [
+                "comment",
+                "post_id"
+            ],
+            "properties": {
+                "comment": {
+                    "type": "string"
+                },
+                "post_id": {
+                    "type": "string"
+                }
+            }
+        },
+        "payload.PostRequest": {
+            "type": "object",
+            "required": [
+                "body",
+                "status",
+                "title"
+            ],
+            "properties": {
+                "body": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "PUBLISH",
+                        "DRAFT"
+                    ]
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "payload.User": {
+            "type": "object",
+            "properties": {
+                "auth_user": {
+                    "$ref": "#/definitions/model.AuthUserModel"
+                }
+            }
+        }
+    }
+}`
+
+// SwaggerInfo holds exported Swagger Info so clients can modify it
+var SwaggerInfo = &amp;swag.Spec{
+        Version:          "",
+        Host:             "",
+        BasePath:         "",
+        Schemes:          []string{},
+        Title:            "",
+        Description:      "",
+        InfoInstanceName: "swagger",
+        SwaggerTemplate:  docTemplate,
+        LeftDelim:        "{{",
+        RightDelim:       "}}",
+}
+
+func init() <span class="cov0" title="0">{
+        swag.Register(SwaggerInfo.InstanceName(), SwaggerInfo)
+}</span>
+</pre>
+		
+		<pre class="file" id="file6" style="display: none">package handler
+
+import (
+        "simple-blog-system/internal/app/comment/payload"
+        "simple-blog-system/internal/app/comment/port"
+        "simple-blog-system/pkg/helper"
+        "strconv"
+
+        "github.com/gin-gonic/gin"
+        "github.com/go-playground/validator/v10"
+)
+
+type handler struct {
+        commentService port.ICommentService
+}
+
+func New(commentService port.ICommentService) port.ICommentHandler <span class="cov0" title="0">{
+        return &amp;handler{
+                commentService: commentService,
+        }
+}</span>
+
+// @BasePath /v1
+
+// @Summary Add Comment
+// @Description Add Comment
+// @Tags comment
+// @Accept json
+// @Produce json
+// @Param comment body payload.CommentRequest true "Param Comment"
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /api/comment [post]
+func (h *handler) AddComment(c *gin.Context) <span class="cov0" title="0">{
+        username := c.GetString("username")
+        var (
+                commentRequest payload.CommentRequest
+        )
+
+        if err := c.ShouldBind(&amp;commentRequest); err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">validate := validator.New()
+        err := validate.Struct(commentRequest)
+        if err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">res, err := h.commentService.AddComment(c.Request.Context(), username, commentRequest)
+        if err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">helper.ResponseData(c, &amp;helper.Response{
+                Message: "insert successfully",
+                Data:    res,
+        })</span>
+}
+
+// @Summary Update Comment
+// @Description Update Comment
+// @Tags comment
+// @Accept json
+// @Produce json
+// @Param comment body payload.CommentRequest true "Param Comment"
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /api/comment/{id} [put]
+func (h *handler) UpdateComment(c *gin.Context) <span class="cov0" title="0">{
+        username := c.GetString("username")
+        var (
+                commentRequest payload.CommentRequest
+        )
+
+        if err := c.ShouldBind(&amp;commentRequest); err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">validate := validator.New()
+        err := validate.Struct(commentRequest)
+        if err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">idStr := c.Param("id")
+
+        res, err := h.commentService.UpdateComment(c.Request.Context(), username, idStr, commentRequest)
+        if err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">helper.ResponseData(c, &amp;helper.Response{
+                Message: "update successfully",
+                Data:    res,
+        })</span>
+}
+
+// @Summary Delete Comment
+// @Description Delete Comment
+// @Tags comment
+// @Accept json
+// @Produce json
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /api/comment/{id} [delete]
+func (h *handler) DeleteComment(c *gin.Context) <span class="cov0" title="0">{
+        username := c.GetString("username")
+
+        idStr := c.Param("id")
+
+        res, err := h.commentService.DeleteComment(c.Request.Context(), username, idStr)
+        if err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">helper.ResponseData(c, &amp;helper.Response{
+                Message: "delete successfully",
+                Data:    res,
+        })</span>
+}
+
+// @Summary Get All Comment
+// @Description Get All Comment
+// @Tags comment
+// @Accept json
+// @Produce json
+// @Param page path int true "Page"
+// @Param limit path int true "Limit"
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /api/comment [get]
+func (h *handler) GetAllComment(c *gin.Context) <span class="cov0" title="0">{
+        username := c.GetString("username")
+
+        pageStr := c.Query("page")
+        page, err := strconv.Atoi(pageStr)
+        if err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">limitStr := c.Query("limit")
+        limit, err := strconv.Atoi(limitStr)
+        if err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">res, err := h.commentService.GetAllComment(c.Request.Context(), username, page, limit)
+        if err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">helper.ResponseData(c, &amp;helper.Response{
+                Message: "get successfully",
+                Data:    res,
+        })</span>
+}
+
+// @Summary Get Comment ID
+// @Description Get Comment ID
+// @Tags comment
+// @Accept json
+// @Produce json
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /api/comment/{id} [get]
+func (h *handler) GetCommentById(c *gin.Context) <span class="cov0" title="0">{
+        username := c.GetString("username")
+
+        idStr := c.Param("id")
+
+        res, err := h.commentService.GetCommentById(c.Request.Context(), username, idStr)
+        if err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">helper.ResponseData(c, &amp;helper.Response{
+                Message: "get successfully",
+                Data:    res,
+        })</span>
+}
+</pre>
+		
+		<pre class="file" id="file7" style="display: none">package model
+
+import (
+        "time"
+
+        model "simple-blog-system/internal/app/post/model"
+
+        "github.com/go-openapi/strfmt"
+        "gorm.io/gorm"
+)
+
+type CommentModel struct {
+        ID        strfmt.UUID4 `json:"id" gorm:"type:uuid;default:uuid_generate_v4()"`
+        Username  string       `json:"username" validate:"required"`
+        Comment   string       `json:"comment" validate:"required"`
+        PostId    string       `json:"post_id" validate:"required"`
+        Post      model.PostModel
+        CreatedBy string         `json:"created_by"`
+        UpdatedBy string         `json:"updated_by" gorm:"default:null"`
+        CreatedAt time.Time      `json:"created_at" gorm:"autoCreateTime"`
+        UpdatedAt time.Time      `json:"updated_at" gorm:"autoUpdateTime"`
+        DeletedAt gorm.DeletedAt `json:"deleted_at" gorm:"default:null"`
+}
+
+func (u CommentModel) TableName() string <span class="cov0" title="0">{
+        return "comments"
+}</span>
+</pre>
+		
+		<pre class="file" id="file8" style="display: none">package repository
+
+import (
+        "context"
+
+        "simple-blog-system/config/db"
+        "simple-blog-system/pkg/cache"
+        "simple-blog-system/pkg/transaction"
+
+        "simple-blog-system/internal/app/comment/model"
+        "simple-blog-system/internal/app/comment/port"
+)
+
+type repository struct {
+        db    *db.GormDB
+        cache cache.ICache
+}
+
+func NewRepository(db *db.GormDB) port.ICommentRepository <span class="cov0" title="0">{
+        return repository{db: db}
+}</span>
+
+func (r repository) InsertComment(ctx context.Context, post model.CommentModel) (model.CommentModel, error) <span class="cov5" title="2">{
+        trx := transaction.GetTrxContext(ctx, r.db)
+        qres := trx.Create(&amp;post).Error
+
+        return post, qres
+}</span>
+
+func (r repository) UpdateComment(ctx context.Context, post model.CommentModel) (res model.CommentModel, err error) <span class="cov5" title="2">{
+        trx := transaction.GetTrxContext(ctx, r.db)
+        qres := trx.Save(&amp;post).Error
+
+        return post, qres
+}</span>
+
+func (r repository) GetCommentById(ctx context.Context, id string) (res *model.CommentModel, err error) <span class="cov8" title="3">{
+        trx := transaction.GetTrxContext(ctx, r.db)
+        err = trx.Preload("Post").Where("id = ?", id).First(&amp;res).Error
+        return res, err
+}</span>
+
+func (r repository) DeleteComment(ctx context.Context, comment model.CommentModel) (err error) <span class="cov8" title="3">{
+        trx := transaction.GetTrxContext(ctx, r.db)
+        err = trx.Delete(&amp;comment).Error
+        return err
+}</span>
+
+func (r repository) GetAllComment(ctx context.Context, page int, limit int) (res []model.CommentModel, err error) <span class="cov10" title="4">{
+        offset := (page - 1) * limit
+
+        trx := transaction.GetTrxContext(ctx, r.db)
+        err = trx.Preload("Post").Limit(limit).Offset(offset).Find(&amp;res).Error
+        return res, err
+}</span>
+</pre>
+		
+		<pre class="file" id="file9" style="display: none">package server
+
+import (
+        "github.com/gin-gonic/gin"
+
+        "simple-blog-system/internal/app/comment/port"
+)
+
+type (
+        routes struct{}
+)
+
+var (
+        Routes routes
+)
+
+func (r routes) New(router *gin.RouterGroup, handler port.ICommentHandler) <span class="cov0" title="0">{
+        router.POST("/", handler.AddComment)
+        router.PUT("/:id", handler.UpdateComment)
+        router.DELETE("/:id", handler.DeleteComment)
+        router.GET("/", handler.GetAllComment)
+        router.GET("/:id", handler.GetCommentById)
+}</span>
+</pre>
+		
+		<pre class="file" id="file10" style="display: none">package service
+
+import (
+        "context"
+        "errors"
+
+        "simple-blog-system/internal/app/comment/model"
+        "simple-blog-system/internal/app/comment/payload"
+        "simple-blog-system/internal/app/comment/port"
+        postPort "simple-blog-system/internal/app/post/port"
+        userPort "simple-blog-system/internal/app/user/port"
+
+        "github.com/go-openapi/strfmt"
+)
+
+type service struct {
+        commentRepo port.ICommentRepository
+        userRepo    userPort.IUserRepository
+        postRepo    postPort.IPostRepository
+}
+
+func New(commentRepo port.ICommentRepository, userRepo userPort.IUserRepository, postRepo postPort.IPostRepository) port.ICommentService <span class="cov0" title="0">{
+        return &amp;service{
+                commentRepo: commentRepo,
+                userRepo:    userRepo,
+                postRepo:    postRepo,
+        }
+}</span>
+
+func (s *service) AddComment(ctx context.Context, username string, param payload.CommentRequest) (res *model.CommentModel, err error) <span class="cov10" title="5">{
+        users, qerr := s.userRepo.GetUserByUsername(ctx, username)
+        if len(users) == 0 || qerr != nil </span><span class="cov4" title="2">{
+                return nil, errors.New("user not found")
+        }</span>
+
+        <span class="cov7" title="3">comment := model.CommentModel{
+                Username:  users[0].Username,
+                Comment:   param.Comment,
+                PostId:    param.PostId,
+                CreatedBy: username,
+        }
+        comment, qerr = s.commentRepo.InsertComment(ctx, comment)
+        if qerr != nil </span><span class="cov1" title="1">{
+                return nil, qerr
+        }</span>
+
+        <span class="cov4" title="2">post, qerr := s.postRepo.GetPostById(ctx, comment.PostId)
+        if qerr != nil </span><span class="cov1" title="1">{
+                return nil, qerr
+        }</span>
+        <span class="cov1" title="1">comment.Post = *post
+
+        return &amp;comment, nil</span>
+}
+
+func (s *service) UpdateComment(ctx context.Context, username string, id string, param payload.CommentRequest) (res *model.CommentModel, err error) <span class="cov7" title="3">{
+        users, qerr := s.userRepo.GetUserByUsername(ctx, username)
+        if len(users) == 0 || qerr != nil </span><span class="cov1" title="1">{
+                return nil, errors.New("user not found")
+        }</span>
+
+        <span class="cov4" title="2">comment := model.CommentModel{
+                ID:        strfmt.UUID4(id),
+                Username:  users[0].Username,
+                Comment:   param.Comment,
+                PostId:    param.PostId,
+                CreatedBy: username,
+        }
+        comment, qerr = s.commentRepo.UpdateComment(ctx, comment)
+        if qerr != nil </span><span class="cov1" title="1">{
+                return nil, qerr
+        }</span>
+
+        <span class="cov1" title="1">post, qerr := s.postRepo.GetPostById(ctx, comment.PostId)
+        if qerr != nil </span><span class="cov0" title="0">{
+                return nil, qerr
+        }</span>
+        <span class="cov1" title="1">comment.Post = *post
+
+        return &amp;comment, nil</span>
+}
+
+func (s *service) DeleteComment(ctx context.Context, username string, id string) (res *model.CommentModel, err error) <span class="cov8" title="4">{
+        users, qerr := s.userRepo.GetUserByUsername(ctx, username)
+        if len(users) == 0 || qerr != nil </span><span class="cov1" title="1">{
+                return nil, errors.New("user not found")
+        }</span>
+
+        <span class="cov7" title="3">comment, err := s.commentRepo.GetCommentById(ctx, id)
+        if err != nil </span><span class="cov1" title="1">{
+                return nil, errors.New("comment not found")
+        }</span>
+
+        <span class="cov4" title="2">err = s.commentRepo.DeleteComment(ctx, *comment)
+        if err != nil </span><span class="cov1" title="1">{
+                return nil, err
+        }</span>
+
+        <span class="cov1" title="1">return comment, nil</span>
+}
+
+func (s *service) GetAllComment(ctx context.Context, username string, page int, limit int) (res []model.CommentModel, err error) <span class="cov7" title="3">{
+        users, qerr := s.userRepo.GetUserByUsername(ctx, username)
+        if len(users) == 0 || qerr != nil </span><span class="cov1" title="1">{
+                return nil, errors.New("user not found")
+        }</span>
+
+        <span class="cov4" title="2">post, err := s.commentRepo.GetAllComment(ctx, page, limit)
+        if err != nil </span><span class="cov1" title="1">{
+                return nil, errors.New("comment not found")
+        }</span>
+
+        <span class="cov1" title="1">return post, nil</span>
+}
+
+func (s *service) GetCommentById(ctx context.Context, username string, id string) (res *model.CommentModel, err error) <span class="cov7" title="3">{
+        users, qerr := s.userRepo.GetUserByUsername(ctx, username)
+        if len(users) == 0 || qerr != nil </span><span class="cov1" title="1">{
+                return nil, errors.New("user not found")
+        }</span>
+
+        <span class="cov4" title="2">comment, err := s.commentRepo.GetCommentById(ctx, id)
+        if err != nil </span><span class="cov1" title="1">{
+                return nil, errors.New("post not found")
+        }</span>
+
+        <span class="cov1" title="1">return comment, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file11" style="display: none">package handler
+
+import (
+        "simple-blog-system/internal/app/post/payload"
+        "simple-blog-system/internal/app/post/port"
+        "simple-blog-system/pkg/helper"
+        "strconv"
+
+        "github.com/gin-gonic/gin"
+        "github.com/go-playground/validator/v10"
+)
+
+type handler struct {
+        postService port.IPostService
+}
+
+func New(postService port.IPostService) port.IPostHandler <span class="cov0" title="0">{
+        return &amp;handler{
+                postService: postService,
+        }
+}</span>
+
+// @BasePath /v1
+
+// @Summary Add Post
+// @Description Add Post
+// @Tags post
+// @Accept json
+// @Produce json
+// @Param post body payload.PostRequest true "Param Post"
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /api/post [post]
+func (h *handler) AddPost(c *gin.Context) <span class="cov0" title="0">{
+        username := c.GetString("username")
+        var (
+                postRequest payload.PostRequest
+        )
+
+        if err := c.ShouldBind(&amp;postRequest); err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">validate := validator.New()
+        err := validate.Struct(postRequest)
+        if err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">res, err := h.postService.AddPost(c.Request.Context(), username, postRequest)
+        if err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">helper.ResponseData(c, &amp;helper.Response{
+                Message: "insert successfully",
+                Data:    res,
+        })</span>
+}
+
+// @Summary Update Post
+// @Description Update Post
+// @Tags post
+// @Accept json
+// @Produce json
+// @Param post body payload.PostRequest true "Param Post"
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /api/post/{id} [put]
+func (h *handler) UpdatePost(c *gin.Context) <span class="cov0" title="0">{
+        username := c.GetString("username")
+        var (
+                postRequest payload.PostRequest
+        )
+
+        if err := c.ShouldBind(&amp;postRequest); err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">validate := validator.New()
+        err := validate.Struct(postRequest)
+        if err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">idStr := c.Param("id")
+
+        res, err := h.postService.UpdatePost(c.Request.Context(), username, idStr, postRequest)
+        if err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">helper.ResponseData(c, &amp;helper.Response{
+                Message: "update successfully",
+                Data:    res,
+        })</span>
+}
+
+// @Summary Delete Post
+// @Description Delete Post
+// @Tags post
+// @Accept json
+// @Produce json
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /api/post/{id} [delete]
+func (h *handler) DeletePost(c *gin.Context) <span class="cov0" title="0">{
+        username := c.GetString("username")
+
+        idStr := c.Param("id")
+
+        res, err := h.postService.DeletePost(c.Request.Context(), username, idStr)
+        if err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">helper.ResponseData(c, &amp;helper.Response{
+                Message: "delete successfully",
+                Data:    res,
+        })</span>
+}
+
+// @Summary Get All Post
+// @Description Get All Post
+// @Tags post
+// @Accept json
+// @Produce json
+// @Param page path int true "Page"
+// @Param limit path int true "Limit"
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /api/post [get]
+func (h *handler) GetAllPost(c *gin.Context) <span class="cov0" title="0">{
+        username := c.GetString("username")
+
+        pageStr := c.Query("page")
+        page, err := strconv.Atoi(pageStr)
+        if err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">limitStr := c.Query("limit")
+        limit, err := strconv.Atoi(limitStr)
+        if err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">res, err := h.postService.GetAllPost(c.Request.Context(), username, page, limit)
+        if err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">helper.ResponseData(c, &amp;helper.Response{
+                Message: "get successfully",
+                Data:    res,
+        })</span>
+}
+
+// @Summary Get Post ID
+// @Description Get Post ID
+// @Tags post
+// @Accept json
+// @Produce json
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /api/post/{id} [get]
+func (h *handler) GetById(c *gin.Context) <span class="cov0" title="0">{
+        username := c.GetString("username")
+
+        idStr := c.Param("id")
+
+        res, err := h.postService.GetById(c.Request.Context(), username, idStr)
+        if err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">helper.ResponseData(c, &amp;helper.Response{
+                Message: "get successfully",
+                Data:    res,
+        })</span>
+}
+</pre>
+		
+		<pre class="file" id="file12" style="display: none">package model
+
+import (
+        "time"
+
+        "github.com/go-openapi/strfmt"
+        "gorm.io/gorm"
+)
+
+type PostModel struct {
+        ID        strfmt.UUID4   `json:"id" gorm:"type:uuid;default:uuid_generate_v4()"`
+        Username  string         `json:"username" validate:"required"`
+        Title     string         `json:"title" validate:"required"`
+        Body      string         `json:"body" validate:"required"`
+        Status    string         `json:"status"`
+        CreatedBy string         `json:"created_by"`
+        UpdatedBy string         `json:"updated_by" gorm:"default:null"`
+        CreatedAt time.Time      `json:"created_at" gorm:"autoCreateTime"`
+        UpdatedAt time.Time      `json:"updated_at" gorm:"autoUpdateTime"`
+        DeletedAt gorm.DeletedAt `json:"deleted_at" gorm:"default:null"`
+}
+
+func (u PostModel) TableName() string <span class="cov0" title="0">{
+        return "posts"
+}</span>
+</pre>
+		
+		<pre class="file" id="file13" style="display: none">package repository
+
+import (
+        "context"
+
+        "simple-blog-system/config/db"
+        "simple-blog-system/pkg/cache"
+        "simple-blog-system/pkg/transaction"
+
+        "simple-blog-system/internal/app/post/model"
+        "simple-blog-system/internal/app/post/port"
+)
+
+type repository struct {
+        db    *db.GormDB
+        cache cache.ICache
+}
+
+func NewRepository(db *db.GormDB) port.IPostRepository <span class="cov0" title="0">{
+        return repository{db: db}
+}</span>
+
+func (r repository) InsertPost(ctx context.Context, post model.PostModel) (model.PostModel, error) <span class="cov5" title="2">{
+        trx := transaction.GetTrxContext(ctx, r.db)
+        qres := trx.Create(&amp;post).Error
+
+        return post, qres
+}</span>
+
+func (r repository) UpdatePost(ctx context.Context, post model.PostModel) (res model.PostModel, err error) <span class="cov5" title="2">{
+        trx := transaction.GetTrxContext(ctx, r.db)
+        qres := trx.Save(&amp;post).Error
+
+        return post, qres
+}</span>
+
+func (r repository) GetPostById(ctx context.Context, id string) (res *model.PostModel, err error) <span class="cov8" title="3">{
+        trx := transaction.GetTrxContext(ctx, r.db)
+        err = trx.Where("id = ?", id).First(&amp;res).Error
+        return res, err
+}</span>
+
+func (r repository) DeletePost(ctx context.Context, post model.PostModel) (err error) <span class="cov8" title="3">{
+        trx := transaction.GetTrxContext(ctx, r.db)
+        err = trx.Delete(&amp;post).Error
+        return err
+}</span>
+
+func (r repository) GetAllPost(ctx context.Context, page int, limit int) (res []model.PostModel, err error) <span class="cov10" title="4">{
+        offset := (page - 1) * limit
+
+        trx := transaction.GetTrxContext(ctx, r.db)
+        err = trx.Limit(limit).Offset(offset).Find(&amp;res).Error
+        return res, err
+}</span>
+</pre>
+		
+		<pre class="file" id="file14" style="display: none">package server
+
+import (
+        "github.com/gin-gonic/gin"
+
+        "simple-blog-system/internal/app/post/port"
+)
+
+type (
+        routes struct{}
+)
+
+var (
+        Routes routes
+)
+
+func (r routes) New(router *gin.RouterGroup, handler port.IPostHandler) <span class="cov0" title="0">{
+        router.POST("/", handler.AddPost)
+        router.PUT("/:id", handler.UpdatePost)
+        router.DELETE("/:id", handler.DeletePost)
+        router.GET("/", handler.GetAllPost)
+        router.GET("/:id", handler.GetById)
+}</span>
+</pre>
+		
+		<pre class="file" id="file15" style="display: none">package service
+
+import (
+        "context"
+        "errors"
+
+        "simple-blog-system/internal/app/post/model"
+        "simple-blog-system/internal/app/post/payload"
+        "simple-blog-system/internal/app/post/port"
+        userPort "simple-blog-system/internal/app/user/port"
+
+        "github.com/go-openapi/strfmt"
+)
+
+type service struct {
+        postRepo port.IPostRepository
+        userRepo userPort.IUserRepository
+}
+
+func New(postRepo port.IPostRepository, userRepo userPort.IUserRepository) port.IPostService <span class="cov0" title="0">{
+        return &amp;service{
+                postRepo: postRepo,
+                userRepo: userRepo,
+        }
+}</span>
+
+func (s *service) AddPost(ctx context.Context, username string, param payload.PostRequest) (res *model.PostModel, err error) <span class="cov10" title="4">{
+        users, qerr := s.userRepo.GetUserByUsername(ctx, username)
+        if len(users) == 0 || qerr != nil </span><span class="cov5" title="2">{
+                return nil, errors.New("user not found")
+        }</span>
+
+        <span class="cov5" title="2">post := model.PostModel{
+                Username:  users[0].Username,
+                Title:     param.Title,
+                Body:      param.Body,
+                Status:    param.Status,
+                CreatedBy: username,
+        }
+        post, qerr = s.postRepo.InsertPost(ctx, post)
+        if qerr != nil </span><span class="cov1" title="1">{
+                return nil, qerr
+        }</span>
+
+        <span class="cov1" title="1">return &amp;post, nil</span>
+}
+
+func (s *service) UpdatePost(ctx context.Context, username string, id string, param payload.PostRequest) (res *model.PostModel, err error) <span class="cov8" title="3">{
+        users, qerr := s.userRepo.GetUserByUsername(ctx, username)
+        if len(users) == 0 || qerr != nil </span><span class="cov1" title="1">{
+                return nil, errors.New("user not found")
+        }</span>
+
+        <span class="cov5" title="2">post := model.PostModel{
+                ID:        strfmt.UUID4(id),
+                Username:  users[0].Username,
+                Title:     param.Title,
+                Body:      param.Body,
+                Status:    param.Status,
+                CreatedBy: username,
+        }
+        post, qerr = s.postRepo.UpdatePost(ctx, post)
+        if qerr != nil </span><span class="cov1" title="1">{
+                return nil, qerr
+        }</span>
+
+        <span class="cov1" title="1">return &amp;post, nil</span>
+}
+
+func (s *service) DeletePost(ctx context.Context, username string, id string) (res *model.PostModel, err error) <span class="cov10" title="4">{
+        users, qerr := s.userRepo.GetUserByUsername(ctx, username)
+        if len(users) == 0 || qerr != nil </span><span class="cov1" title="1">{
+                return nil, errors.New("user not found")
+        }</span>
+
+        <span class="cov8" title="3">post, err := s.postRepo.GetPostById(ctx, id)
+        if err != nil </span><span class="cov1" title="1">{
+                return nil, errors.New("post not found")
+        }</span>
+
+        <span class="cov5" title="2">err = s.postRepo.DeletePost(ctx, *post)
+        if err != nil </span><span class="cov1" title="1">{
+                return nil, err
+        }</span>
+
+        <span class="cov1" title="1">return post, nil</span>
+}
+
+func (s *service) GetAllPost(ctx context.Context, username string, page int, limit int) (res []model.PostModel, err error) <span class="cov8" title="3">{
+        users, qerr := s.userRepo.GetUserByUsername(ctx, username)
+        if len(users) == 0 || qerr != nil </span><span class="cov1" title="1">{
+                return nil, errors.New("user not found")
+        }</span>
+
+        <span class="cov5" title="2">post, err := s.postRepo.GetAllPost(ctx, page, limit)
+        if err != nil </span><span class="cov1" title="1">{
+                return nil, errors.New("post not found")
+        }</span>
+
+        <span class="cov1" title="1">return post, nil</span>
+}
+
+func (s *service) GetById(ctx context.Context, username string, id string) (res *model.PostModel, err error) <span class="cov8" title="3">{
+        users, qerr := s.userRepo.GetUserByUsername(ctx, username)
+        if len(users) == 0 || qerr != nil </span><span class="cov1" title="1">{
+                return nil, errors.New("user not found")
+        }</span>
+
+        <span class="cov5" title="2">post, err := s.postRepo.GetPostById(ctx, id)
+        if err != nil </span><span class="cov1" title="1">{
+                return nil, errors.New("post not found")
+        }</span>
+
+        <span class="cov1" title="1">return post, nil</span>
+}
+</pre>
+		
+		<pre class="file" id="file16" style="display: none">package handler
+
+import (
+        "simple-blog-system/internal/app/user/model"
+        "simple-blog-system/internal/app/user/payload"
+        "simple-blog-system/internal/app/user/port"
+        "simple-blog-system/pkg/helper"
+
+        "github.com/gin-gonic/gin"
+        "github.com/go-playground/validator/v10"
+)
+
+type handler struct {
+        userService port.IUserService
+}
+
+func New(userService port.IUserService) port.IUserHandler <span class="cov0" title="0">{
+        return &amp;handler{
+                userService: userService,
+        }
+}</span>
+
+// @BasePath /v1
+
+// @Summary Register User
+// @Description Register User
+// @Tags user
+// @Accept json
+// @Produce json
+// @Param user body payload.User true "Param Register"
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /public-api/user/register [post]
+func (h *handler) Register(c *gin.Context) <span class="cov0" title="0">{
+        var (
+                dataUser payload.User
+        )
+        if err := c.ShouldBind(&amp;dataUser); err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">validate := validator.New()
+        err := validate.Struct(dataUser)
+        if err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">res, err := h.userService.Register(c.Request.Context(), dataUser.User)
+        if err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">helper.ResponseData(c, &amp;helper.Response{
+                Message: "register successfully",
+                Data:    res,
+        })</span>
+}
+
+// @Summary Login User
+// @Description Login User
+// @Tags user
+// @Accept json
+// @Produce json
+// @Param user body model.AuthUserModel true "Param Login"
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /public-api/user/login [post]
+func (h *handler) Login(c *gin.Context) <span class="cov0" title="0">{
+        var (
+                dataUser model.AuthUserModel
+        )
+
+        if err := c.ShouldBind(&amp;dataUser); err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">validate := validator.New()
+        err := validate.Struct(dataUser)
+        if err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">res, err := h.userService.Login(c.Request.Context(), dataUser)
+        if err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">helper.ResponseData(c, &amp;helper.Response{
+                Message: "login successfully",
+                Data:    res,
+        })</span>
+}
+
+// @Summary Get User
+// @Description Get User
+// @Tags user
+// @Accept json
+// @Produce json
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /api/profile [get]
+func (h *handler) GetUser(c *gin.Context) <span class="cov0" title="0">{
+        username := c.GetString("username")
+        res, err := h.userService.GetUser(c.Request.Context(), username)
+        if err != nil </span><span class="cov0" title="0">{
+                helper.ResponseError(c, err)
+                return
+        }</span>
+
+        <span class="cov0" title="0">helper.ResponseData(c, &amp;helper.Response{
+                Message: "get user successfully",
+                Data:    res,
+        })</span>
+}
+</pre>
+		
+		<pre class="file" id="file17" style="display: none">package model
+
+import (
+        "time"
+
+        "github.com/go-openapi/strfmt"
+)
+
+type AuthUserModel struct {
+        ID        strfmt.UUID4 `json:"id" gorm:"type:uuid;default:uuid_generate_v4()"`
+        Username  string       `json:"username" validate:"required"`
+        Password  string       `json:"password" validate:"required"`
+        IsActive  bool         `json:"is_active"`
+        LastLogin time.Time    `json:"last_login"`
+        CreatedBy string       `json:"created_by"`
+        UpdatedBy string       `json:"updated_by" gorm:"default:null"`
+        CreatedAt time.Time    `json:"created_at" gorm:"autoCreateTime"`
+        UpdatedAt time.Time    `json:"updated_at" gorm:"autoUpdateTime"`
+        DeletedAt time.Time    `json:"deleted_at" gorm:"default:null"`
+}
+
+func (u AuthUserModel) TableName() string <span class="cov0" title="0">{
+        return "auth_user"
+}</span>
+</pre>
+		
+		<pre class="file" id="file18" style="display: none">package repository
+
+import (
+        "context"
+
+        "simple-blog-system/config/db"
+        "simple-blog-system/pkg/cache"
+        "simple-blog-system/pkg/transaction"
+
+        "simple-blog-system/internal/app/user/model"
+        "simple-blog-system/internal/app/user/port"
+)
+
+type repository struct {
+        db    *db.GormDB
+        cache cache.ICache
+}
+
+func NewRepository(db *db.GormDB) port.IUserRepository <span class="cov0" title="0">{
+        return repository{db: db}
+}</span>
+
+func (r repository) InsertUser(ctx context.Context, user model.AuthUserModel) (model.AuthUserModel, error) <span class="cov6" title="2">{
+        trx := transaction.GetTrxContext(ctx, r.db)
+        qres := trx.Create(&amp;user).Error
+
+        return user, qres
+}</span>
+
+func (r repository) GetUserByUsername(ctx context.Context, username string) (user []model.AuthUserModel, err error) <span class="cov10" title="3">{
+        trx := transaction.GetTrxContext(ctx, r.db)
+        err = trx.Select("id, username, created_at, updated_at").Where("username = ?", username).Find(&amp;user).Error
+        return user, err
+}</span>
+
+func (r repository) GetPasswordByUsername(ctx context.Context, username string) (user []model.AuthUserModel, err error) <span class="cov10" title="3">{
+        trx := transaction.GetTrxContext(ctx, r.db)
+        err = trx.Select("id, password, username, created_at, updated_at").Where("username = ?", username).Find(&amp;user).Error
+        return user, err
+}</span>
+
+func (r repository) UpdateLastLogin(ctx context.Context, user model.AuthUserModel) error <span class="cov10" title="3">{
+        trx := transaction.GetTrxContext(ctx, r.db)
+        err := trx.Model(&amp;model.AuthUserModel{}).Where("username = ?", user.Username).Update("last_login", user.LastLogin).Error
+        return err
+}</span>
+</pre>
+		
+		<pre class="file" id="file19" style="display: none">package server
+
+import (
+        "github.com/gin-gonic/gin"
+
+        "simple-blog-system/internal/app/user/port"
+)
+
+type (
+        routes struct{}
+)
+
+var (
+        Routes routes
+)
+
+func (r routes) New(router *gin.RouterGroup, handler port.IUserHandler) <span class="cov0" title="0">{
+        router.POST("/register", handler.Register)
+        router.POST("/login", handler.Login)
+}</span>
+
+func (r routes) NewProfile(router *gin.RouterGroup, handler port.IUserHandler) <span class="cov0" title="0">{
+        router.GET("/", handler.GetUser)
+}</span>
+</pre>
+		
+		<pre class="file" id="file20" style="display: none">package service
+
+import (
+        "context"
+        "errors"
+        "time"
+
+        "simple-blog-system/internal/app/user/model"
+        "simple-blog-system/internal/app/user/payload"
+        "simple-blog-system/internal/app/user/port"
+
+        "simple-blog-system/config"
+        "simple-blog-system/pkg/encrypt"
+
+        jwt "github.com/golang-jwt/jwt/v5"
+)
+
+type service struct {
+        userRepo port.IUserRepository
+}
+
+func New(userRepo port.IUserRepository) port.IUserService <span class="cov0" title="0">{
+        return &amp;service{
+                userRepo: userRepo,
+        }
+}</span>
+
+func (s *service) Register(ctx context.Context, user model.AuthUserModel) (token string, err error) <span class="cov8" title="4">{
+        username, qerr := s.userRepo.GetUserByUsername(ctx, user.Username)
+        if qerr != nil </span><span class="cov1" title="1">{
+                return "", qerr
+        }</span>
+        <span class="cov7" title="3">if len(username) &gt; 0 </span><span class="cov1" title="1">{
+                return "", errors.New("user already exists")
+        }</span>
+
+        <span class="cov4" title="2">hash, qerr := encrypt.HashPassword(user.Password)
+        if qerr != nil </span><span class="cov0" title="0">{
+                return "", qerr
+        }</span>
+
+        <span class="cov4" title="2">user.CreatedBy = user.Username
+        user.LastLogin = time.Now()
+        user.Password = hash
+        user, qerr = s.userRepo.InsertUser(ctx, user)
+        if qerr != nil </span><span class="cov1" title="1">{
+                return "", qerr
+        }</span>
+
+        <span class="cov1" title="1">tokenString, err := createToken(user)
+
+        return tokenString, err</span>
+}
+
+func createToken(user model.AuthUserModel) (string, error) <span class="cov7" title="3">{
+        configData := config.GetConfig()
+        claims := jwt.NewWithClaims(jwt.SigningMethodHS256, jwt.MapClaims{
+                "id":       user.ID,
+                "username": user.Username,
+                "exp":      time.Now().Add(time.Hour).Unix(),
+                "iat":      time.Now().Unix(),
+        })
+        tokenString, err := claims.SignedString([]byte(configData.JWT.SigningKey))
+
+        return tokenString, err
+}</span>
+
+func (s service) Login(ctx context.Context, user model.AuthUserModel) (token string, err error) <span class="cov10" title="5">{
+        users, qerr := s.userRepo.GetPasswordByUsername(ctx, user.Username)
+        if len(users) == 0 || qerr != nil </span><span class="cov4" title="2">{
+                return "", errors.New("incorrect username or password")
+        }</span>
+
+        <span class="cov7" title="3">match := encrypt.CheckPasswordHash(user.Password, users[0].Password)
+        if !match </span><span class="cov1" title="1">{
+                return "", errors.New("incorrect username or password")
+        }</span>
+
+        <span class="cov4" title="2">tokenString, err := createToken(users[0])
+
+        users[0].LastLogin = time.Now()
+        users[0].UpdatedBy = user.Username
+        qerr = s.userRepo.UpdateLastLogin(ctx, users[0])
+        if qerr != nil </span><span class="cov1" title="1">{
+                return "", qerr
+        }</span>
+
+        <span class="cov1" title="1">return tokenString, err</span>
+}
+
+func (s service) GetUser(ctx context.Context, username string) (res *payload.User, err error) <span class="cov7" title="3">{
+        users, qerr := s.userRepo.GetUserByUsername(ctx, username)
+        if len(users) == 0 || qerr != nil </span><span class="cov4" title="2">{
+                return nil, errors.New("user not found")
+        }</span>
+
+        <span class="cov1" title="1">resUser := &amp;payload.User{
+                User: users[0],
+        }
+
+        return resUser, err</span>
+}
+</pre>
+		
+		<pre class="file" id="file21" style="display: none">package setup
+
+import (
+        "gorm.io/gorm"
+
+        "simple-blog-system/pkg/transaction"
+
+        "simple-blog-system/config/db"
+
+        // healthCheckHandler "simple-blog-system/internal/app/healthcheck/handler"
+        // healthCheckPorts "simple-blog-system/internal/app/healthcheck/port"
+        // healthCheckRepo "simple-blog-system/internal/app/healthcheck/repository"
+        // healthCheckService "simple-blog-system/internal/app/healthcheck/service"
+
+        userHandler "simple-blog-system/internal/app/user/handler"
+        userPorts "simple-blog-system/internal/app/user/port"
+        userRepo "simple-blog-system/internal/app/user/repository"
+        userService "simple-blog-system/internal/app/user/service"
+
+        postHandler "simple-blog-system/internal/app/post/handler"
+        postPorts "simple-blog-system/internal/app/post/port"
+        postRepo "simple-blog-system/internal/app/post/repository"
+        postService "simple-blog-system/internal/app/post/service"
+
+        commentHandler "simple-blog-system/internal/app/comment/handler"
+        commentPorts "simple-blog-system/internal/app/comment/port"
+        commentRepo "simple-blog-system/internal/app/comment/repository"
+        commentService "simple-blog-system/internal/app/comment/service"
+)
+
+type InternalAppStruct struct {
+        Repositories initRepositoriesApp
+        Services     initServicesApp
+        Handler      InitHandlerApp
+}
+
+type initRepositoriesApp struct {
+        userRepo    userPorts.IUserRepository
+        postRepo    postPorts.IPostRepository
+        commentRepo commentPorts.ICommentRepository
+        TrxHandler  transaction.ISqlTransaction
+        // HealthCheckRepo healthCheckPorts.IHealthCheckRepository
+        dbInstance *gorm.DB
+        // cache      cache.ICache
+}
+
+func initAppRepo(gormDB *db.GormDB, initializeApp *InternalAppStruct) <span class="cov0" title="0">{
+        initializeApp.Repositories.userRepo = userRepo.NewRepository(gormDB)
+        initializeApp.Repositories.postRepo = postRepo.NewRepository(gormDB)
+        initializeApp.Repositories.commentRepo = commentRepo.NewRepository(gormDB)
+        // initializeApp.Repositories.HealthCheckRepo = healthCheckRepo.NewHealthCheckRepository(gormDB.DB, rc)
+
+        // Initiate trxRepo handler
+        initializeApp.Repositories.TrxHandler = transaction.NewSqlTransaction(gormDB)
+
+        // Get Gorm instance
+        initializeApp.Repositories.dbInstance = gormDB.DB
+}</span>
+
+type initServicesApp struct {
+        UserService    userPorts.IUserService
+        PostService    postPorts.IPostService
+        CommentService commentPorts.ICommentService
+        // HealthCheckService healthCheckPorts.IHealthCheckService
+}
+
+func initAppService(initializeApp *InternalAppStruct) <span class="cov0" title="0">{
+        // initializeApp.Services.HealthCheckService = healthCheckService.NewService(initializeApp.Repositories.HealthCheckRepo)
+        initializeApp.Services.UserService = userService.New(initializeApp.Repositories.userRepo)
+        initializeApp.Services.PostService = postService.New(initializeApp.Repositories.postRepo, initializeApp.Repositories.userRepo)
+        initializeApp.Services.CommentService = commentService.New(initializeApp.Repositories.commentRepo, initializeApp.Repositories.userRepo, initializeApp.Repositories.postRepo)
+}</span>
+
+// HANDLER INIT
+type InitHandlerApp struct {
+        UserHandler    userPorts.IUserHandler
+        PostHandler    postPorts.IPostHandler
+        CommentHandler commentPorts.ICommentHandler
+        // HealthCheckHandler healthCheckPorts.IHealthCheckHandler
+}
+
+func initAppHandler(initializeApp *InternalAppStruct) <span class="cov0" title="0">{
+        // initializeApp.Handler.HealthCheckHandler = healthCheckHandler.NewHealthCheckHandler(initializeApp.Services.HealthCheckService)
+        initializeApp.Handler.UserHandler = userHandler.New(initializeApp.Services.UserService)
+        initializeApp.Handler.PostHandler = postHandler.New(initializeApp.Services.PostService)
+        initializeApp.Handler.CommentHandler = commentHandler.New(initializeApp.Services.CommentService)
+}</span>
+</pre>
+		
+		<pre class="file" id="file22" style="display: none">package setup
+
+import (
+        "simple-blog-system/config"
+        "simple-blog-system/config/db"
+
+        "log"
+)
+
+// BaseURL base url of api
+const BaseURL = "/v1/api"
+
+// CloseDB close connection to db
+var CloseDB func() error
+
+type SetupData struct {
+        ConfigData  config.Config
+        InternalApp InternalAppStruct
+}
+
+func Init() SetupData <span class="cov0" title="0">{
+        configData := config.GetConfig()
+
+        //DB INIT
+        dbConn, err := db.Init(configData.DB.DSN)
+        if err != nil </span><span class="cov0" title="0">{
+                log.Println("database error")
+        }</span>
+
+        <span class="cov0" title="0">CloseDB = func() error </span><span class="cov0" title="0">{
+                if err := dbConn.CloseConnection(); err != nil </span><span class="cov0" title="0">{
+                        return err
+                }</span>
+
+                <span class="cov0" title="0">return nil</span>
+        }
+
+        <span class="cov0" title="0">internalAppVar := initInternalApp(dbConn.GormDB)
+
+        return SetupData{
+                ConfigData:  configData,
+                InternalApp: internalAppVar,
+        }</span>
+}
+
+func initInternalApp(gormDB *db.GormDB) InternalAppStruct <span class="cov0" title="0">{
+        var internalAppVar InternalAppStruct
+
+        initAppRepo(gormDB, &amp;internalAppVar)
+        initAppService(&amp;internalAppVar)
+        initAppHandler(&amp;internalAppVar)
+
+        return internalAppVar
+}</span>
+</pre>
+		
+		<pre class="file" id="file23" style="display: none">package main
+
+import (
+        "context"
+        "time"
+
+        "simple-blog-system/cmd/rest"
+        "simple-blog-system/config"
+        appSetup "simple-blog-system/internal/setup"
+        "simple-blog-system/pkg/log"
+)
+
+func main() <span class="cov0" title="0">{
+        // config init
+        log.InitZeroLog()
+        config.InitConfig()
+        // conf := config.GetConfig()
+
+        _, cancel := context.WithTimeout(context.Background(), time.Second*3)
+        defer cancel()
+
+        // app setup init
+        setup := appSetup.Init()
+
+        rest.StartServer(setup)
+}</span>
+</pre>
+		
+		<pre class="file" id="file24" style="display: none">package encrypt
+
+import (
+        "golang.org/x/crypto/bcrypt"
+)
+
+func HashPassword(password string) (string, error) <span class="cov0" title="0">{
+        bytes, err := bcrypt.GenerateFromPassword([]byte(password), 14)
+        return string(bytes), err
+}</span>
+
+func CheckPasswordHash(password, hash string) bool <span class="cov0" title="0">{
+        err := bcrypt.CompareHashAndPassword([]byte(hash), []byte(password))
+        return err == nil
+}</span>
+</pre>
+		
+		<pre class="file" id="file25" style="display: none">package helper
+
+import (
+        "fmt"
+        "time"
+)
+
+func ListWeekdays(startDate, endDate string) []string <span class="cov0" title="0">{
+        start, _ := time.Parse("2006-01-02", startDate)
+        end, _ := time.Parse("2006-01-02", endDate)
+        if start.After(end) </span><span class="cov0" title="0">{
+                start, end = end, start // Ensure start is before or equal to end
+        }</span>
+
+        <span class="cov0" title="0">listWeekdays := []string{}
+        for d := start; !d.After(end); d = d.Add(24 * time.Hour) </span><span class="cov0" title="0">{
+                weekday := d.Weekday()
+                if weekday != time.Saturday &amp;&amp; weekday != time.Sunday </span><span class="cov0" title="0">{
+                        listWeekdays = append(listWeekdays, d.Format("2006-01-02"))
+                }</span>
+        }
+        <span class="cov0" title="0">return listWeekdays</span>
+}
+
+func CountWeekdays(month int, year int) int <span class="cov0" title="0">{
+        start := fmt.Sprintf("%d-%d-01", year, month)
+        startMonth, _ := time.Parse("2006-01-02", start)
+        lastOfMonth := startMonth.AddDate(0, 1, -1)
+        end := lastOfMonth.Format("2006-01-02")
+        listWeekdays := ListWeekdays(start, end)
+        return len(listWeekdays)
+}</span>
+
+func DifferenceDate(a, b []string) (diff []string) <span class="cov0" title="0">{
+        m := make(map[string]bool)
+        for _, item := range b </span><span class="cov0" title="0">{
+                m[item] = true
+        }</span>
+
+        <span class="cov0" title="0">for _, item := range a </span><span class="cov0" title="0">{
+                if _, ok := m[item]; !ok </span><span class="cov0" title="0">{
+                        diff = append(diff, item)
+                }</span>
+        }
+        <span class="cov0" title="0">return</span>
+}
+</pre>
+		
+		<pre class="file" id="file26" style="display: none">package helper
+
+import (
+        "context"
+        "errors"
+        "net/http"
+        "strings"
+        "time"
+
+        "github.com/gin-gonic/gin"
+        "github.com/rs/zerolog/log"
+        "gorm.io/gorm"
+)
+
+type Response struct {
+        Data      interface{} `json:"data"`
+        Success   bool        `json:"success"`
+        Message   string      `json:"message"`
+        RequestId any         `json:"request_id"`
+}
+
+type ginHands struct {
+        Path       string
+        Latency    time.Duration
+        Method     string
+        StatusCode int
+        ClientIP   string
+        MsgStr     string
+        RequestId  string
+}
+
+type ResponseErrorData struct {
+        Type string `json:"data"`
+        Code int64  `json:"success"`
+}
+
+func ResponseData(c *gin.Context, res *Response) <span class="cov0" title="0">{
+        requestID, _ := c.Get("requestID")
+        res.Success = true
+        res.RequestId = requestID
+
+        SaveAuditLog(c, res.Message)
+        c.JSON(200, res)
+}</span>
+
+func GetIpAddress(c *gin.Context) string <span class="cov0" title="0">{
+        ip := c.GetHeader("X-Real-IP")
+        if ip == "" </span><span class="cov0" title="0">{
+                ip = c.GetHeader("X-Forwarded-For")
+        }</span>
+
+        <span class="cov0" title="0">if ip == "" </span><span class="cov0" title="0">{
+                ip = c.ClientIP()
+        }</span>
+        <span class="cov0" title="0">return ip</span>
+}
+
+func SaveAuditLog(c *gin.Context, msg string) <span class="cov0" title="0">{
+        timeStart, _ := c.Get("timeStart")
+        timeParsed, _ := time.Parse(time.RFC3339, timeStart.(string))
+
+        requestID, _ := c.Get("requestID")
+
+        path := c.Request.URL.Path
+        raw := c.Request.URL.RawQuery
+        if raw != "" </span><span class="cov0" title="0">{
+                path = path + "?" + raw
+        }</span>
+        <span class="cov0" title="0">cData := &amp;ginHands{
+                Path:       path,
+                Latency:    time.Since(timeParsed),
+                Method:     c.Request.Method,
+                StatusCode: c.Writer.Status(),
+                ClientIP:   GetIpAddress(c),
+                MsgStr:     msg,
+                RequestId:  requestID.(string),
+        }
+
+        logSwitch(cData)</span>
+}
+
+func logSwitch(data *ginHands) <span class="cov0" title="0">{
+        switch </span>{
+        case data.StatusCode &gt;= 400 &amp;&amp; data.StatusCode &lt; 500:<span class="cov0" title="0">
+                log.Warn().Str("request_id", data.RequestId).Str("method", data.Method).Str("path", data.Path).Dur("resp_time", data.Latency).Int("status", data.StatusCode).Str("client_ip", data.ClientIP).Msg(data.MsgStr)</span>
+        case data.StatusCode &gt;= 500:<span class="cov0" title="0">
+                log.Error().Str("request_id", data.RequestId).Str("method", data.Method).Str("path", data.Path).Dur("resp_time", data.Latency).Int("status", data.StatusCode).Str("client_ip", data.ClientIP).Msg(data.MsgStr)</span>
+        default:<span class="cov0" title="0">
+                log.Info().Str("request_id", data.RequestId).Str("method", data.Method).Str("path", data.Path).Dur("resp_time", data.Latency).Int("status", data.StatusCode).Str("client_ip", data.ClientIP).Msg(data.MsgStr)</span>
+        }
+}
+
+func ResponseError(c *gin.Context, err error, opts ...interface{}) <span class="cov0" title="0">{
+        t := "InternalServerError"
+        d := err.Error()
+
+        code := http.StatusInternalServerError
+
+        // if request cancelled
+        if c.Request.Context().Err() == context.Canceled </span><span class="cov0" title="0">{
+                c.AbortWithStatus(http.StatusNoContent)
+                return
+        }</span>
+
+        <span class="cov0" title="0">for _, v := range opts </span><span class="cov0" title="0">{
+                if tErr, ok := v.(string); ok </span><span class="cov0" title="0">{
+                        if strings.Contains(tErr, " ") </span><span class="cov0" title="0">{
+                                d = tErr
+                        }</span> else<span class="cov0" title="0"> {
+                                t = tErr
+                        }</span>
+                }
+                <span class="cov0" title="0">if cErr, ok := v.(int); ok &amp;&amp; cErr &gt;= 100 &amp;&amp; cErr &lt;= 599 </span><span class="cov0" title="0">{
+                        code = cErr
+                }</span>
+        }
+
+        <span class="cov0" title="0">if errors.Is(err, gorm.ErrRecordNotFound) || strings.Contains(err.Error(), "not found") </span><span class="cov0" title="0">{
+                code = http.StatusNotFound
+                t = "NotFound"
+        }</span>
+
+        <span class="cov0" title="0">requestID, _ := c.Get("requestID")
+        SaveAuditLog(c, d)
+        c.AbortWithStatusJSON(code, &amp;Response{
+                Success: false,
+                Message: d,
+                Data: &amp;ResponseErrorData{
+                        Type: t,
+                        Code: int64(code),
+                },
+                RequestId: requestID,
+        })</span>
+}
+</pre>
+		
+		<pre class="file" id="file27" style="display: none">package log
+
+import (
+        "github.com/natefinch/lumberjack"
+        "github.com/rs/zerolog"
+        "github.com/rs/zerolog/log"
+)
+
+func InitZeroLog() <span class="cov0" title="0">{
+        // zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
+        // runLogFile, _ := os.OpenFile(
+        //         "log/app.log",
+        //         os.O_APPEND|os.O_CREATE|os.O_WRONLY,
+        //         0664,
+        // )
+        // multi := zerolog.MultiLevelWriter(runLogFile)
+        // log.Logger = zerolog.New(os.Stdout).With().Timestamp().Logger()
+
+        lumberjackLogger := &amp;lumberjack.Logger{
+                Filename:   "log/app.log",
+                MaxSize:    10,   // Max size in megabytes before log is rotated
+                MaxBackups: 3,    // Max number of old log files to retain
+                MaxAge:     28,   // Max number of days to retain old log files
+                Compress:   true, // Compress old log files
+        }
+
+        log.Logger = zerolog.New(lumberjackLogger).With().Timestamp().Logger()
+}</span>
+</pre>
+		
+		<pre class="file" id="file28" style="display: none">package transaction
+
+import (
+        "database/sql"
+        "strings"
+
+        "github.com/avast/retry-go"
+        "golang.org/x/net/context"
+        "gorm.io/gorm"
+
+        "simple-blog-system/config/db"
+)
+
+// KeyTrx type for key context value transaction
+type KeyTrx string
+
+// KeyTransaction concrete type for key context value transaction
+const KeyTransaction KeyTrx = KeyTrx("postgredb-hr-trx")
+
+type SqlTransaction struct {
+        dbx *db.GormDB
+}
+
+// Transaction wraps sql transaction within 1 function with given context
+func (s SqlTransaction) Transaction(c context.Context, fn func(wrappedCtx context.Context) error, opts ...*sql.TxOptions) error <span class="cov0" title="0">{
+        const errorMsg = "could not serialize access due to read/write dependencies among transactions"
+        return retry.Do(
+                func() error </span><span class="cov0" title="0">{
+                        return s.dbx.Transaction(func(tx *gorm.DB) error </span><span class="cov0" title="0">{
+                                db := &amp;db.GormDB{
+                                        DB: tx,
+                                }
+                                ctx := context.WithValue(c, KeyTransaction, db)
+                                return fn(ctx)
+                        }</span>, opts...)
+                },
+                retry.RetryIf(func(err error) bool <span class="cov0" title="0">{
+                        return strings.Contains(err.Error(), errorMsg)
+                }</span>),
+                retry.LastErrorOnly(true),
+        )
+}
+
+func NewSqlTransaction(db *db.GormDB) ISqlTransaction <span class="cov0" title="0">{
+        return SqlTransaction{
+                dbx: db,
+        }
+}</span>
+</pre>
+		
+		<pre class="file" id="file29" style="display: none">package transaction
+
+import (
+        "context"
+
+        "simple-blog-system/config/db"
+)
+
+// GetTrxContext returns default db instance where context doesn't contains custom db instance
+func GetTrxContext(c context.Context, defaultDB *db.GormDB) *db.GormDB <span class="cov0" title="0">{
+        tx, ok := c.Value(KeyTransaction).(*db.GormDB)
+        if !ok </span><span class="cov0" title="0">{
+                // defaultDB.DB.Set("ipAddress", ipAddress)
+                return &amp;db.GormDB{
+                        DB: defaultDB.DB.WithContext(c),
+                }
+        }</span>
+
+        <span class="cov0" title="0">return &amp;db.GormDB{
+                DB: tx.DB.WithContext(c),
+        }</span>
+}
+</pre>
+		
+		<pre class="file" id="file30" style="display: none">package validations
+
+import (
+        "fmt"
+        "reflect"
+        "regexp"
+        "strconv"
+        "time"
+
+        "github.com/go-openapi/strfmt"
+        "github.com/go-playground/validator/v10"
+)
+
+// IsFieldEqual validate a field that must satisfy value(this) == param
+func IsFieldEqual(field reflect.Value, param string) bool <span class="cov0" title="0">{
+        switch field.Kind() </span>{
+        case reflect.String:<span class="cov0" title="0">
+                return field.String() == param</span>
+        case reflect.Slice, reflect.Map, reflect.Array:<span class="cov0" title="0">
+                p, _ := strconv.ParseInt(param, 0, 64)
+
+                return int64(field.Len()) == p</span>
+        case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:<span class="cov0" title="0">
+                p, _ := strconv.ParseInt(param, 0, 64)
+
+                return field.Int() == p</span>
+        case reflect.Uint, reflect.Uint8, reflect.Uint16, reflect.Uint32, reflect.Uint64, reflect.Uintptr:<span class="cov0" title="0">
+                p, _ := strconv.ParseUint(param, 0, 64)
+
+                return field.Uint() == p</span>
+        case reflect.Float32, reflect.Float64:<span class="cov0" title="0">
+                p, _ := strconv.ParseFloat(param, 64)
+
+                return field.Float() == p</span>
+        case reflect.Bool:<span class="cov0" title="0">
+                p, _ := strconv.ParseBool(param)
+
+                return field.Bool() == p</span>
+        }
+
+        <span class="cov0" title="0">panic(fmt.Sprintf("Bad field type %T", field.Interface()))</span>
+}
+
+// SplitBySpaceWithQuote split string by space, ignore if the string is quoted
+//
+// Ex: aaaa bbb "cc    ccc" 'a c' =&gt; [aaaa, bbb, "cc    ccc", 'a c']
+func SplitBySpaceWithQuote(value string) []string <span class="cov0" title="0">{
+        r := regexp.MustCompile(`[^\s"']+|"([^"]*)"|'([^']*)'`)
+
+        return r.FindAllString(value, -1)
+}</span>
+
+// UnQuote unquote a string (support single and double quote)
+//
+// Ex: "this is double quoted string" =&gt; this is double quoted string
+func UnQuote(value string) string <span class="cov0" title="0">{
+        if value[0] == '\'' || value[0] == '"' </span><span class="cov0" title="0">{
+                value = value[1:]
+        }</span>
+
+        <span class="cov0" title="0">if value[len(value)-1] == '\'' || value[len(value)-1] == '"' </span><span class="cov0" title="0">{
+                value = value[:len(value)-1]
+        }</span>
+
+        <span class="cov0" title="0">return value</span>
+}
+
+// TimeAfterNow validate a strfmt.DateTime field that must satisfy value(this) &gt; current time
+//
+// Usage: `binding:"time_after_now"`
+func TimeAfterNow(fl validator.FieldLevel) bool <span class="cov0" title="0">{
+        field := fl.Field()
+
+        if dateField, ok := field.Interface().(strfmt.DateTime); ok </span><span class="cov0" title="0">{
+                return time.Time(dateField).After(time.Now())
+        }</span>
+
+        <span class="cov0" title="0">return false</span>
+}
+
+// TimeAfterField validate a strfmt.DateTime field that must satisfy value(this) &gt; value(AnotherTimeField)
+//
+// Usage: `binding:"time_after_field=AnotherTimeField"`
+func TimeAfterField(fl validator.FieldLevel) bool <span class="cov0" title="0">{
+        field := fl.Field()
+        param := SplitBySpaceWithQuote(fl.Param())
+
+        if len(param) != 1 </span><span class="cov0" title="0">{
+                return false
+        }</span>
+
+        <span class="cov0" title="0">var paramField reflect.Value
+        if fl.Parent().Kind() == reflect.Ptr </span><span class="cov0" title="0">{
+                paramField = fl.Parent().Elem().FieldByName(param[0])
+        }</span> else<span class="cov0" title="0"> {
+                paramField = fl.Parent().FieldByName(param[0])
+        }</span>
+
+        <span class="cov0" title="0">if dateField, ok := field.Interface().(strfmt.DateTime); ok </span><span class="cov0" title="0">{
+                if dateParamField, ok2 := paramField.Interface().(strfmt.DateTime); ok2 </span><span class="cov0" title="0">{
+                        isValid := time.Time(dateField).After(time.Time(dateParamField))
+
+                        return isValid
+                }</span>
+        }
+
+        <span class="cov0" title="0">return false</span>
+}
+
+// MinIfFieldEqual validate a number field that must satisfy value(this) &gt;= ANumber if ConditionalField == "ConditionValue"
+//
+// Usage: `binding:"min_if_field_eq=ANumber ConditionalField 'ConditionValue'"`
+func MinIfFieldEqual(fl validator.FieldLevel) bool <span class="cov0" title="0">{
+        field := fl.Field()
+        param := SplitBySpaceWithQuote(fl.Param())
+
+        if len(param) != 3 </span><span class="cov0" title="0">{
+                return false
+        }</span>
+
+        <span class="cov0" title="0">var param1Field reflect.Value
+        if fl.Parent().Kind() == reflect.Ptr </span><span class="cov0" title="0">{
+                param1Field = fl.Parent().Elem().FieldByName(param[1])
+        }</span> else<span class="cov0" title="0"> {
+                param1Field = fl.Parent().FieldByName(param[1])
+        }</span>
+
+        <span class="cov0" title="0">if !IsFieldEqual(param1Field, UnQuote(param[2])) </span><span class="cov0" title="0">{
+                return true
+        }</span>
+
+        <span class="cov0" title="0">iField := field.Interface()
+        f64Param0, err := strconv.ParseFloat(param[0], 64)
+        if err != nil </span><span class="cov0" title="0">{
+                return false
+        }</span>
+
+        <span class="cov0" title="0">return iField.(float64) &gt;= f64Param0</span>
+}
+
+// MaxIfFieldEqual validate a number field that must satisfy value(this) &lt;= ANumber if ConditionalField == "ConditionValue"
+//
+// Usage: `binding:"max_if_field_eq=ANumber ConditionalField 'ConditionValue'"`
+func MaxIfFieldEqual(fl validator.FieldLevel) bool <span class="cov0" title="0">{
+        field := fl.Field()
+        param := SplitBySpaceWithQuote(fl.Param())
+
+        if len(param) != 3 </span><span class="cov0" title="0">{
+                return false
+        }</span>
+
+        <span class="cov0" title="0">var param1Field reflect.Value
+        if fl.Parent().Kind() == reflect.Ptr </span><span class="cov0" title="0">{
+                param1Field = fl.Parent().Elem().FieldByName(param[1])
+        }</span> else<span class="cov0" title="0"> {
+                param1Field = fl.Parent().FieldByName(param[1])
+        }</span>
+
+        <span class="cov0" title="0">if !IsFieldEqual(param1Field, UnQuote(param[2])) </span><span class="cov0" title="0">{
+                return true
+        }</span>
+
+        <span class="cov0" title="0">iField := field.Interface()
+        f64Param0, err := strconv.ParseFloat(param[0], 64)
+        if err != nil </span><span class="cov0" title="0">{
+                return false
+        }</span>
+
+        <span class="cov0" title="0">return iField.(float64) &lt;= f64Param0</span>
+}
+
+// LTEFieldIfFieldEqual validate a number field that must satisfy value(this) &lt;= value(DestField) if ConditionalField == "ConditionValue"
+//
+// Usage: `binding:"lte_field_if_field_eq=DestField ConditionalField 'ConditionValue'"`
+func LTEFieldIfFieldEqual(fl validator.FieldLevel) bool <span class="cov0" title="0">{
+        field := fl.Field()
+        param := SplitBySpaceWithQuote(fl.Param())
+
+        if len(param) != 3 </span><span class="cov0" title="0">{
+                return false
+        }</span>
+
+        <span class="cov0" title="0">var param0Field reflect.Value
+        var param1Field reflect.Value
+        if fl.Parent().Kind() == reflect.Ptr </span><span class="cov0" title="0">{
+                param0Field = fl.Parent().Elem().FieldByName(param[0])
+                param1Field = fl.Parent().Elem().FieldByName(param[1])
+        }</span> else<span class="cov0" title="0"> {
+                param0Field = fl.Parent().FieldByName(param[0])
+                param1Field = fl.Parent().FieldByName(param[1])
+        }</span>
+
+        <span class="cov0" title="0">if !IsFieldEqual(param1Field, UnQuote(param[2])) </span><span class="cov0" title="0">{
+                return true
+        }</span>
+
+        <span class="cov0" title="0">iField := field.Interface()
+        iParam0Field := param0Field.Interface()
+
+        return iField.(float64) &lt;= iParam0Field.(float64)</span>
+}
+
+// GTEFieldIfFieldEqual validate a number field that must satisfy value(this) &gt;= value(DestField) if ConditionalField == "ConditionValue"
+//
+// Usage: `binding:"gte_field_if_field_eq=DestField ConditionalField 'ConditionValue'"`
+func GTEFieldIfFieldEqual(fl validator.FieldLevel) bool <span class="cov0" title="0">{
+        field := fl.Field()
+        param := SplitBySpaceWithQuote(fl.Param())
+
+        if len(param) != 3 </span><span class="cov0" title="0">{
+                return false
+        }</span>
+
+        <span class="cov0" title="0">var param0Field reflect.Value
+        var param1Field reflect.Value
+        if fl.Parent().Kind() == reflect.Ptr </span><span class="cov0" title="0">{
+                param0Field = fl.Parent().Elem().FieldByName(param[0])
+                param1Field = fl.Parent().Elem().FieldByName(param[1])
+        }</span> else<span class="cov0" title="0"> {
+                param0Field = fl.Parent().FieldByName(param[0])
+                param1Field = fl.Parent().FieldByName(param[1])
+        }</span>
+
+        <span class="cov0" title="0">if !IsFieldEqual(param1Field, UnQuote(param[2])) </span><span class="cov0" title="0">{
+                return true
+        }</span>
+
+        <span class="cov0" title="0">iField := field.Interface()
+        iParam0Field := param0Field.Interface()
+
+        return iField.(float64) &gt;= iParam0Field.(float64)</span>
+}
+
+// MinFieldIfFieldEqual validate a number field that must satisfy min(value(this), value(DestField)) == value(DestField), if ConditionalField == "ConditionValue"
+//
+// Usage: `binding:"min_field_if_field_eq=DestField ConditionalField 'ConditionValue'"`
+func MinFieldIfFieldEqual(fl validator.FieldLevel) bool <span class="cov0" title="0">{
+        return GTEFieldIfFieldEqual(fl)
+}</span>
+
+// MaxFieldIfFieldEqual validate a number field that must satisfy max(value(this), value(DestField)) == value(DestField), if ConditionalField == "ConditionValue"
+//
+// Usage: `binding:"max_field_if_field_eq=DestField ConditionalField 'ConditionValue'"`
+func MaxFieldIfFieldEqual(fl validator.FieldLevel) bool <span class="cov0" title="0">{
+        return LTEFieldIfFieldEqual(fl)
+}</span>
+</pre>
+		
+		<pre class="file" id="file31" style="display: none">package validations
+
+import (
+        "fmt"
+        "time"
+
+        "github.com/gin-gonic/gin/binding"
+        "github.com/go-playground/validator/v10"
+)
+
+// StructValidation const
+const (
+        StructValidationTimeAfterNow                      = "time_after_now"
+        StructValidationTimeAfterField                    = "time_after_field"
+        StructValidationMinimumIfFieldEqual               = "min_if_field_eq"
+        StructValidationMaximumIfFieldEqual               = "max_if_field_eq"
+        StructValidationLessThanEqualFieldIfFieldEqual    = "lte_field_if_field_eq"
+        StructValidationGreaterThanEqualFieldIfFieldEqual = "gte_field_if_field_eq"
+        StructValidationMinimumFieldIfFieldEqual          = "min_field_if_field_eq"
+        StructValidationMaximumFieldIfFieldEqual          = "max_field_if_field_eq"
+)
+
+// InitStructValidation init struct validation
+func InitStructValidation() <span class="cov0" title="0">{
+        structValidation := map[string]func(fl validator.FieldLevel) bool{
+                StructValidationTimeAfterNow:                      TimeAfterNow,
+                StructValidationTimeAfterField:                    TimeAfterField,
+                StructValidationMinimumIfFieldEqual:               MinIfFieldEqual,
+                StructValidationMaximumIfFieldEqual:               MaxIfFieldEqual,
+                StructValidationLessThanEqualFieldIfFieldEqual:    LTEFieldIfFieldEqual,
+                StructValidationGreaterThanEqualFieldIfFieldEqual: GTEFieldIfFieldEqual,
+                StructValidationMinimumFieldIfFieldEqual:          MinFieldIfFieldEqual,
+                StructValidationMaximumFieldIfFieldEqual:          MaxFieldIfFieldEqual,
+        }
+
+        if v, ok := binding.Validator.Engine().(*validator.Validate); ok </span><span class="cov0" title="0">{
+                for tag, validationFunc := range structValidation </span><span class="cov0" title="0">{
+                        err := v.RegisterValidation(tag, validationFunc)
+                        if err != nil </span><span class="cov0" title="0">{
+                                panic(fmt.Errorf("can not register validation function: %s", tag))</span>
+                        }
+                }
+        }
+}
+
+func IsWeekend(t time.Time) bool <span class="cov0" title="0">{
+        day := t.Weekday()
+        return day == time.Saturday || day == time.Sunday
+}</span>
+
+func IsSameDateMonth(t1, t2 time.Time) bool <span class="cov0" title="0">{
+        return t1.Year() == t2.Year() &amp;&amp; t1.Month() == t2.Month()
+}</span>
+</pre>
+		
+		</div>
+	</body>
+	<script>
+	(function() {
+		var files = document.getElementById('files');
+		var visible;
+		files.addEventListener('change', onChange, false);
+		function select(part) {
+			if (visible)
+				visible.style.display = 'none';
+			visible = document.getElementById(part);
+			if (!visible)
+				return;
+			files.value = part;
+			visible.style.display = 'block';
+			location.hash = part;
+		}
+		function onChange() {
+			select(files.value);
+			window.scrollTo(0, 0);
+		}
+		if (location.hash != "") {
+			select(location.hash.substr(1));
+		}
+		if (!visible) {
+			select("file0");
+		}
+	})();
+	</script>
+</html>

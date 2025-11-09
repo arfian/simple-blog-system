@@ -71,6 +71,11 @@ $ go mod download
 $ go run main.go 
 ```
 
+### Check Unit Test
+```sh
+$ make test 
+```
+
 ## ERD Database
 ERD Database you can click url dbdiagram : https://dbdiagram.io/d/simple-blog-system-690fbf026735e11170e11198
 
