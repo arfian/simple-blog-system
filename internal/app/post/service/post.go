@@ -66,3 +66,22 @@ func (s *service) UpdatePost(ctx context.Context, username string, id string, pa
 
 	return &post, nil
 }
+
+func (s *service) DeletePost(ctx context.Context, username string, id string) (res *model.PostModel, err error) {
+	users, qerr := s.userRepo.GetUserByUsername(ctx, username)
+	if len(users) == 0 || qerr != nil {
+		return nil, errors.New("user not found")
+	}
+
+	post, err := s.postRepo.GetPostById(ctx, id)
+	if err != nil {
+		return nil, errors.New("post not found")
+	}
+
+	err = s.postRepo.DeletePost(ctx, *post)
+	if err != nil {
+		return nil, err
+	}
+
+	return post, nil
+}

@@ -11,4 +11,7 @@ type IPostHandler interface {
 
 	// (POST /put)
 	UpdatePost(ctx *gin.Context)
+
+	// (DELETE /put)
+	DeletePost(ctx *gin.Context)
 }

@@ -34,8 +34,14 @@ func (r repository) UpdatePost(ctx context.Context, post model.PostModel) (res m
 	return post, qres
 }
 
-func (r repository) GetPostById(ctx context.Context, year int, month int, id string) (res *model.PostModel, err error) {
+func (r repository) GetPostById(ctx context.Context, id string) (res *model.PostModel, err error) {
 	trx := transaction.GetTrxContext(ctx, r.db)
-	err = trx.Where("id", id).First(res).Error
+	err = trx.Where("id = ?", id).First(&res).Error
 	return res, err
+}
+
+func (r repository) DeletePost(ctx context.Context, post model.PostModel) (err error) {
+	trx := transaction.GetTrxContext(ctx, r.db)
+	err = trx.Delete(&post).Error
+	return err
 }

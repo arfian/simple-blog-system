@@ -80,3 +80,28 @@ func (h *handler) UpdatePost(c *gin.Context) {
 		Data:    res,
 	})
 }
+
+func (h *handler) DeletePost(c *gin.Context) {
+	username := c.GetString("username")
+	var (
+		postRequest payload.PostRequest
+	)
+
+	if err := c.ShouldBind(&postRequest); err != nil {
+		helper.ResponseError(c, err)
+		return
+	}
+
+	idStr := c.Param("id")
+
+	res, err := h.postService.DeletePost(c.Request.Context(), username, idStr)
+	if err != nil {
+		helper.ResponseError(c, err)
+		return
+	}
+
+	helper.ResponseData(c, &helper.Response{
+		Message: "delete successfully",
+		Data:    res,
+	})
+}
