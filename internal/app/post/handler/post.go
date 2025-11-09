@@ -4,6 +4,7 @@ import (
 	"simple-blog-system/internal/app/post/payload"
 	"simple-blog-system/internal/app/post/port"
 	"simple-blog-system/pkg/helper"
+	"strconv"
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator/v10"
@@ -95,6 +96,68 @@ func (h *handler) DeletePost(c *gin.Context) {
 	idStr := c.Param("id")
 
 	res, err := h.postService.DeletePost(c.Request.Context(), username, idStr)
+	if err != nil {
+		helper.ResponseError(c, err)
+		return
+	}
+
+	helper.ResponseData(c, &helper.Response{
+		Message: "delete successfully",
+		Data:    res,
+	})
+}
+
+func (h *handler) GetAllPost(c *gin.Context) {
+	username := c.GetString("username")
+	var (
+		postRequest payload.PostRequest
+	)
+
+	if err := c.ShouldBind(&postRequest); err != nil {
+		helper.ResponseError(c, err)
+		return
+	}
+
+	pageStr := c.Query("page")
+	page, err := strconv.Atoi(pageStr)
+	if err != nil {
+		helper.ResponseError(c, err)
+		return
+	}
+
+	limitStr := c.Query("limit")
+	limit, err := strconv.Atoi(limitStr)
+	if err != nil {
+		helper.ResponseError(c, err)
+		return
+	}
+
+	res, err := h.postService.GetAllPost(c.Request.Context(), username, page, limit)
+	if err != nil {
+		helper.ResponseError(c, err)
+		return
+	}
+
+	helper.ResponseData(c, &helper.Response{
+		Message: "get successfully",
+		Data:    res,
+	})
+}
+
+func (h *handler) GetById(c *gin.Context) {
+	username := c.GetString("username")
+	var (
+		postRequest payload.PostRequest
+	)
+
+	if err := c.ShouldBind(&postRequest); err != nil {
+		helper.ResponseError(c, err)
+		return
+	}
+
+	idStr := c.Param("id")
+
+	res, err := h.postService.GetById(c.Request.Context(), username, idStr)
 	if err != nil {
 		helper.ResponseError(c, err)
 		return

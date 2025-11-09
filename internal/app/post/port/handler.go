@@ -9,9 +9,15 @@ type IPostHandler interface {
 	// (POST /post)
 	AddPost(ctx *gin.Context)
 
-	// (POST /put)
+	// (POST /post/:id)
 	UpdatePost(ctx *gin.Context)
 
-	// (DELETE /put)
+	// (DELETE /post/:id)
 	DeletePost(ctx *gin.Context)
+
+	// (GET /post)
+	GetAllPost(ctx *gin.Context)
+
+	// (GET /post/:id)
+	GetById(ctx *gin.Context)
 }

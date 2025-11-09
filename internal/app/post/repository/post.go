@@ -45,3 +45,11 @@ func (r repository) DeletePost(ctx context.Context, post model.PostModel) (err e
 	err = trx.Delete(&post).Error
 	return err
 }
+
+func (r repository) GetAllPost(ctx context.Context, page int, limit int) (res []model.PostModel, err error) {
+	offset := (page - 1) * limit
+
+	trx := transaction.GetTrxContext(ctx, r.db)
+	err = trx.Limit(limit).Offset(offset).Find(&res).Error
+	return res, err
+}

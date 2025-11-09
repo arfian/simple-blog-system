@@ -85,3 +85,31 @@ func (s *service) DeletePost(ctx context.Context, username string, id string) (r
 
 	return post, nil
 }
+
+func (s *service) GetAllPost(ctx context.Context, username string, page int, limit int) (res []model.PostModel, err error) {
+	users, qerr := s.userRepo.GetUserByUsername(ctx, username)
+	if len(users) == 0 || qerr != nil {
+		return nil, errors.New("user not found")
+	}
+
+	post, err := s.postRepo.GetAllPost(ctx, page, limit)
+	if err != nil {
+		return nil, errors.New("post not found")
+	}
+
+	return post, nil
+}
+
+func (s *service) GetById(ctx context.Context, username string, id string) (res *model.PostModel, err error) {
+	users, qerr := s.userRepo.GetUserByUsername(ctx, username)
+	if len(users) == 0 || qerr != nil {
+		return nil, errors.New("user not found")
+	}
+
+	post, err := s.postRepo.GetPostById(ctx, id)
+	if err != nil {
+		return nil, errors.New("post not found")
+	}
+
+	return post, nil
+}

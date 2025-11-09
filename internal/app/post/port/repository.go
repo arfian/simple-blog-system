@@ -10,4 +10,5 @@ type IPostRepository interface {
 	UpdatePost(ctx context.Context, post model.PostModel) (res model.PostModel, err error)
 	DeletePost(ctx context.Context, post model.PostModel) (err error)
 	GetPostById(ctx context.Context, id string) (res *model.PostModel, err error)
+	GetAllPost(ctx context.Context, page int, limit int) (res []model.PostModel, err error)
 }
