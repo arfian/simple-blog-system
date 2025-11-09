@@ -8,18 +8,80 @@ definitions:
       success:
         type: boolean
     type: object
+  model.AuthUserModel:
+    properties:
+      created_at:
+        type: string
+      created_by:
+        type: string
+      deleted_at:
+        type: string
+      id:
+        type: string
+      is_active:
+        type: boolean
+      last_login:
+        type: string
+      password:
+        type: string
+      updated_at:
+        type: string
+      updated_by:
+        type: string
+      username:
+        type: string
+    required:
+    - password
+    - username
+    type: object
+  payload.CommentRequest:
+    properties:
+      comment:
+        type: string
+      post_id:
+        type: string
+    required:
+    - comment
+    - post_id
+    type: object
+  payload.PostRequest:
+    properties:
+      body:
+        type: string
+      status:
+        enum:
+        - PUBLISH
+        - DRAFT
+        type: string
+      title:
+        type: string
+    required:
+    - body
+    - status
+    - title
+    type: object
+  payload.User:
+    properties:
+      auth_user:
+        $ref: '#/definitions/model.AuthUserModel'
+    type: object
 info:
   contact: {}
 paths:
-  /accounts/{id}:
+  /api/comment:
     get:
       consumes:
       - application/json
-      description: get string by ID
+      description: Get All Comment
       parameters:
-      - description: Account ID
+      - description: Page
         in: path
-        name: id
+        name: page
+        required: true
+        type: integer
+      - description: Limit
+        in: path
+        name: limit
         required: true
         type: integer
       produces:
@@ -33,15 +95,282 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/helper.Response'
-        "404":
-          description: Not Found
-          schema:
-            $ref: '#/definitions/helper.Response'
-        "500":
-          description: Internal Server Error
-          schema:
-            $ref: '#/definitions/helper.Response'
-      summary: Show an account
+      summary: Get All Comment
       tags:
-      - accounts
+      - comment
+    post:
+      consumes:
+      - application/json
+      description: Add Comment
+      parameters:
+      - description: Param Comment
+        in: body
+        name: comment
+        required: true
+        schema:
+          $ref: '#/definitions/payload.CommentRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      summary: Add Comment
+      tags:
+      - comment
+  /api/comment/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Comment
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      summary: Delete Comment
+      tags:
+      - comment
+    get:
+      consumes:
+      - application/json
+      description: Get Comment ID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      summary: Get Comment ID
+      tags:
+      - comment
+    put:
+      consumes:
+      - application/json
+      description: Update Comment
+      parameters:
+      - description: Param Comment
+        in: body
+        name: comment
+        required: true
+        schema:
+          $ref: '#/definitions/payload.CommentRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      summary: Update Comment
+      tags:
+      - comment
+  /api/post:
+    get:
+      consumes:
+      - application/json
+      description: Get All Post
+      parameters:
+      - description: Page
+        in: path
+        name: page
+        required: true
+        type: integer
+      - description: Limit
+        in: path
+        name: limit
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      summary: Get All Post
+      tags:
+      - post
+    post:
+      consumes:
+      - application/json
+      description: Add Post
+      parameters:
+      - description: Param Post
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/payload.PostRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      summary: Add Post
+      tags:
+      - post
+  /api/post/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete Post
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      summary: Delete Post
+      tags:
+      - post
+    get:
+      consumes:
+      - application/json
+      description: Get Post ID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      summary: Get Post ID
+      tags:
+      - post
+    put:
+      consumes:
+      - application/json
+      description: Update Post
+      parameters:
+      - description: Param Post
+        in: body
+        name: post
+        required: true
+        schema:
+          $ref: '#/definitions/payload.PostRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      summary: Update Post
+      tags:
+      - post
+  /api/profile:
+    get:
+      consumes:
+      - application/json
+      description: Get User
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      summary: Get User
+      tags:
+      - user
+  /public-api/user/login:
+    post:
+      consumes:
+      - application/json
+      description: Login User
+      parameters:
+      - description: Param Login
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/model.AuthUserModel'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      summary: Login User
+      tags:
+      - user
+  /public-api/user/register:
+    post:
+      consumes:
+      - application/json
+      description: Register User
+      parameters:
+      - description: Param Register
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/payload.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/helper.Response'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/helper.Response'
+      summary: Register User
+      tags:
+      - user
 swagger: "2.0"

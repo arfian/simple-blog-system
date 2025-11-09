@@ -20,18 +20,17 @@ func New(userService port.IUserService) port.IUserHandler {
 	}
 }
 
-// ShowAccount godoc
-// @Summary      Show an account
-// @Description  get string by ID
-// @Tags         accounts
-// @Accept       json
-// @Produce      json
-// @Param        id   path      int  true  "Account ID"
-// @Success      200  {object}  helper.Response
-// @Failure      400  {object}  helper.Response
-// @Failure      404  {object}  helper.Response
-// @Failure      500  {object}  helper.Response
-// @Router       /accounts/{id} [get]
+// @BasePath /v1
+
+// @Summary Register User
+// @Description Register User
+// @Tags user
+// @Accept json
+// @Produce json
+// @Param user body payload.User true "Param Register"
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /public-api/user/register [post]
 func (h *handler) Register(c *gin.Context) {
 	var (
 		dataUser payload.User
@@ -60,6 +59,15 @@ func (h *handler) Register(c *gin.Context) {
 	})
 }
 
+// @Summary Login User
+// @Description Login User
+// @Tags user
+// @Accept json
+// @Produce json
+// @Param user body model.AuthUserModel true "Param Login"
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /public-api/user/login [post]
 func (h *handler) Login(c *gin.Context) {
 	var (
 		dataUser model.AuthUserModel
@@ -89,6 +97,14 @@ func (h *handler) Login(c *gin.Context) {
 	})
 }
 
+// @Summary Get User
+// @Description Get User
+// @Tags user
+// @Accept json
+// @Produce json
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /api/profile [get]
 func (h *handler) GetUser(c *gin.Context) {
 	username := c.GetString("username")
 	res, err := h.userService.GetUser(c.Request.Context(), username)

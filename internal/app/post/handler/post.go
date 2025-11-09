@@ -20,6 +20,17 @@ func New(postService port.IPostService) port.IPostHandler {
 	}
 }
 
+// @BasePath /v1
+
+// @Summary Add Post
+// @Description Add Post
+// @Tags post
+// @Accept json
+// @Produce json
+// @Param post body payload.PostRequest true "Param Post"
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /api/post [post]
 func (h *handler) AddPost(c *gin.Context) {
 	username := c.GetString("username")
 	var (
@@ -50,6 +61,15 @@ func (h *handler) AddPost(c *gin.Context) {
 	})
 }
 
+// @Summary Update Post
+// @Description Update Post
+// @Tags post
+// @Accept json
+// @Produce json
+// @Param post body payload.PostRequest true "Param Post"
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /api/post/{id} [put]
 func (h *handler) UpdatePost(c *gin.Context) {
 	username := c.GetString("username")
 	var (
@@ -82,6 +102,14 @@ func (h *handler) UpdatePost(c *gin.Context) {
 	})
 }
 
+// @Summary Delete Post
+// @Description Delete Post
+// @Tags post
+// @Accept json
+// @Produce json
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /api/post/{id} [delete]
 func (h *handler) DeletePost(c *gin.Context) {
 	username := c.GetString("username")
 
@@ -99,6 +127,16 @@ func (h *handler) DeletePost(c *gin.Context) {
 	})
 }
 
+// @Summary Get All Post
+// @Description Get All Post
+// @Tags post
+// @Accept json
+// @Produce json
+// @Param page path int true "Page"
+// @Param limit path int true "Limit"
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /api/post [get]
 func (h *handler) GetAllPost(c *gin.Context) {
 	username := c.GetString("username")
 
@@ -128,6 +166,14 @@ func (h *handler) GetAllPost(c *gin.Context) {
 	})
 }
 
+// @Summary Get Post ID
+// @Description Get Post ID
+// @Tags post
+// @Accept json
+// @Produce json
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /api/post/{id} [get]
 func (h *handler) GetById(c *gin.Context) {
 	username := c.GetString("username")
 

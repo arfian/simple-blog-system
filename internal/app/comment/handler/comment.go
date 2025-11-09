@@ -20,6 +20,17 @@ func New(commentService port.ICommentService) port.ICommentHandler {
 	}
 }
 
+// @BasePath /v1
+
+// @Summary Add Comment
+// @Description Add Comment
+// @Tags comment
+// @Accept json
+// @Produce json
+// @Param comment body payload.CommentRequest true "Param Comment"
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /api/comment [post]
 func (h *handler) AddComment(c *gin.Context) {
 	username := c.GetString("username")
 	var (
@@ -50,6 +61,15 @@ func (h *handler) AddComment(c *gin.Context) {
 	})
 }
 
+// @Summary Update Comment
+// @Description Update Comment
+// @Tags comment
+// @Accept json
+// @Produce json
+// @Param comment body payload.CommentRequest true "Param Comment"
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /api/comment/{id} [put]
 func (h *handler) UpdateComment(c *gin.Context) {
 	username := c.GetString("username")
 	var (
@@ -82,6 +102,14 @@ func (h *handler) UpdateComment(c *gin.Context) {
 	})
 }
 
+// @Summary Delete Comment
+// @Description Delete Comment
+// @Tags comment
+// @Accept json
+// @Produce json
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /api/comment/{id} [delete]
 func (h *handler) DeleteComment(c *gin.Context) {
 	username := c.GetString("username")
 
@@ -99,6 +127,16 @@ func (h *handler) DeleteComment(c *gin.Context) {
 	})
 }
 
+// @Summary Get All Comment
+// @Description Get All Comment
+// @Tags comment
+// @Accept json
+// @Produce json
+// @Param page path int true "Page"
+// @Param limit path int true "Limit"
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /api/comment [get]
 func (h *handler) GetAllComment(c *gin.Context) {
 	username := c.GetString("username")
 
@@ -128,6 +166,14 @@ func (h *handler) GetAllComment(c *gin.Context) {
 	})
 }
 
+// @Summary Get Comment ID
+// @Description Get Comment ID
+// @Tags comment
+// @Accept json
+// @Produce json
+// @Success 200 {object} helper.Response
+// @Failure 400 {object} helper.Response
+// @Router /api/comment/{id} [get]
 func (h *handler) GetCommentById(c *gin.Context) {
 	username := c.GetString("username")
 
