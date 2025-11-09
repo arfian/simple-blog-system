@@ -35,7 +35,7 @@ DB_MAX_IDLE_CONN=10
 DB_MAX_LIFETIME_CONN=4
 DB_MAX_IDLETIME_CONN=1
 
-SIGNING_KEY=hrsystemsalary123
+SIGNING_KEY=simpleblogsystem123
 CACHE_TTL=10
 ```
 
@@ -72,12 +72,12 @@ $ go run main.go
 ```
 
 ## ERD Database
-ERD Database you can click url dbdiagram : https://dbdiagram.io/d/HR-System-6843f5c25a9a94714e50849c
+ERD Database you can click url dbdiagram : https://dbdiagram.io/d/simple-blog-system-690fbf026735e11170e11198
 
 ## API Documentation
 The API documentation is available in Postman format. Import the following files into Postman:
 
-- `postman/Hr System Salary.postman_collection.json`
+- `postman/Simple Blog Post.postman_collection.json`
 
 ### Key Endpoints
 
@@ -86,18 +86,19 @@ The API documentation is available in Postman format. Import the following files
    - POST `/v1/public-api/user/login` - User login
    - GET `/v1/api/profile/` - User login
 
-2. Attendance
-   - POST `/v1/api/attendance/employee` - Post insert antendance employee
-   - POST `/v1/api/attendance/admin` - Post insert antendance admin
-   - POST `/v1/api/attendance/overtime` - Post insert overtime employee
+2. Post
+   - POST `/v1/api/post` - insert post data
+   - PUT `/v1/api/post/{id}` - update post data
+   - DELETE `/v1/api/post/{id}` - Delete post data
+   - GET `/v1/api/post/{id}` - Get Post By ID
+   - GET `/v1/api/post` - Get All Post
 
-3. Reimbursement
-   - POST `/v1/api/reimbursement` - Post insert reimbursement employee
-
-4. Payroll
-   - POST `/v1/api/payroll` - Post generate admin payroll
-   - POST `/v1/api/payroll/get-payslip` - Post get payslip employee
-   - POST `/v1/api/payroll/get-all-payslip` - Post get all payslip admin
+3. Comment
+   - POST `/v1/api/comment` - insert comment data
+   - PUT `/v1/api/comment/{id}` - update comment data
+   - DELETE `/v1/api/comment/{id}` - Delete comment data
+   - GET `/v1/api/comment/{id}` - Get Pcommentost By ID
+   - GET `/v1/api/comment` - Get All comment
 
 ## Project Structure
 ```
