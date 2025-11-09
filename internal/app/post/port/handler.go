@@ -8,4 +8,7 @@ type IPostHandler interface {
 
 	// (POST /post)
 	AddPost(ctx *gin.Context)
+
+	// (POST /put)
+	UpdatePost(ctx *gin.Context)
 }

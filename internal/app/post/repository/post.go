@@ -27,6 +27,13 @@ func (r repository) InsertPost(ctx context.Context, post model.PostModel) (model
 	return post, qres
 }
 
+func (r repository) UpdatePost(ctx context.Context, post model.PostModel) (res model.PostModel, err error) {
+	trx := transaction.GetTrxContext(ctx, r.db)
+	qres := trx.Save(&post).Error
+
+	return post, qres
+}
+
 func (r repository) GetPostById(ctx context.Context, year int, month int, id string) (res *model.PostModel, err error) {
 	trx := transaction.GetTrxContext(ctx, r.db)
 	err = trx.Where("id", id).First(res).Error

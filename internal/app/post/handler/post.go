@@ -48,3 +48,35 @@ func (h *handler) AddPost(c *gin.Context) {
 		Data:    res,
 	})
 }
+
+func (h *handler) UpdatePost(c *gin.Context) {
+	username := c.GetString("username")
+	var (
+		postRequest payload.PostRequest
+	)
+
+	if err := c.ShouldBind(&postRequest); err != nil {
+		helper.ResponseError(c, err)
+		return
+	}
+
+	validate := validator.New()
+	err := validate.Struct(postRequest)
+	if err != nil {
+		helper.ResponseError(c, err)
+		return
+	}
+
+	idStr := c.Param("id")
+
+	res, err := h.postService.UpdatePost(c.Request.Context(), username, idStr, postRequest)
+	if err != nil {
+		helper.ResponseError(c, err)
+		return
+	}
+
+	helper.ResponseData(c, &helper.Response{
+		Message: "update successfully",
+		Data:    res,
+	})
+}

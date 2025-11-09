@@ -16,4 +16,5 @@ var (
 
 func (r routes) New(router *gin.RouterGroup, handler port.IPostHandler) {
 	router.POST("/", handler.AddPost)
+	router.PUT("/:id", handler.UpdatePost)
 }

@@ -8,4 +8,5 @@ import (
 
 type IPostService interface {
 	AddPost(ctx context.Context, username string, param payload.PostRequest) (res *model.PostModel, err error)
+	UpdatePost(ctx context.Context, username string, id string, param payload.PostRequest) (res *model.PostModel, err error)
 }
